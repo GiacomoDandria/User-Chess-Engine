@@ -1,4 +1,4 @@
-#include"moveComputer.h"
+#include"computer.h"
 
 void computer::autoMove() {
 	/*int randomInt = rand();
