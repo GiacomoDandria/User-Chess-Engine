@@ -1,8 +1,10 @@
 #pragma once
+#include<iostream>
 #include"scacchiera.h"
+#include "math.h"
 
-class middlePiecesCheck {
-	static bool check(scacchiera board, int vert, int orizz);
+struct middlePieces {
+	static bool check(scacchiera board, int fromLetter, int fromNumber, int toLetter, int toNumber);
 
 };
 

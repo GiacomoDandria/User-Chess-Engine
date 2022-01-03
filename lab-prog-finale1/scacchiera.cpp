@@ -36,6 +36,11 @@ char scacchiera::getPiece(int vert, int orizz) {
     
 }
 
+//operator[](int vert, int orizz) {
+//    return scacchiera::board[vert][orizz];
+//
+//}
+
 
 
 

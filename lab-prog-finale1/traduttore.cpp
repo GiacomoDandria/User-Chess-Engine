@@ -4,7 +4,7 @@
 
 int traduttore::traduttoreLetter(char letter) {
     int convertedFrom = 0;
-    /*il try - catch dovrebbe essere inutile : alla funzione vengono passati soltanto argomenti
+    /*il try - catch dovrebbe essere inutile: alla funzione vengono passati soltanto argomenti
       corretti, infatti il controllo viene eseguito dalla funzione traduttore::traduci()*/
     try {
         if (letter == 'a' || letter == 'A')
@@ -62,8 +62,6 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
             throw std::invalid_argument("");
         }
 
-        std::cout << inputMovement[3] << std::endl;
-        std::cout << validLetters.find(inputMovement[3]) << std::endl;
         fromLetter = traduttore::traduttoreLetter(inputMovement[0]);
         fromNumber = traduttore::traduttoreNumber(inputMovement[1] - '0');
         toLetter = traduttore::traduttoreLetter(inputMovement[3]);
