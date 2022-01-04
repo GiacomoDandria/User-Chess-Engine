@@ -15,113 +15,27 @@
 using namespace std;
 
 int main() {
-    
+    int cont = 0;
     scacchiera board;
-
-    //bool flag = true;
-    //int counter = 0;
-    //int MAX_MOVES = 40;
-    //while (flag) {
-    //    string mossa;
-    //    cout << "Inserire una mossa: ";
-    //    cin >> mossa;
-
-    //    vector<int> input = traduttore::traduci(mossa);
-    //    int fromLetter = input.at(0);
-    //    int fromNumber = input.at(1);
-    //    char boardPiece = board.getPiece(fromLetter, fromNumber);
-
-    //    cout << "Il pezzo che si vuole muovere è: " << boardPiece << endl;
-
-    //    switch (boardPiece) {
-    //        /*check pezzi maiuscoli (pezzi neri)*/
-    //        case 'T':
-    //            torre::moveTorreCheck(mossa);
-    //            break;
-    //        case 'C':
-    //            break;
-    //        case 'A':
-    //            break;
-    //        case 'D':
-    //            break;
-    //        case 'R':
-    //            break;
-    //        case 'P':
-    //            break;
-
-    //        /*check pezzi minuscoli (pezzi bianchi)*/
-    //        case 't':
-    //            break;
-    //        case 'c':
-    //            break;
-    //        case 'a':
-    //            break;
-    //        case 'd':
-    //            break;
-    //        case 'r':
-    //            break;
-    //        case 'p':
-    //            break;
-
-
-    //    default:
-    //        string input;
-    //        cout << "Insert a valid move:  ";
-    //        cin >> input;
-    //    }
-
-    //    counter++;
-    //    if (counter == MAX_MOVES)
-    //        flag = false;
-    //}
-
-    //cout << "Fine partita. Termino programma!" << endl;
-    //return 0;
-    
-    
-
+    computer white('w');
+    cout << "\n\n------------------\n\n";
     board.printScacchiera();
-
-
-    computer::autoMove();
-
-    //cout << "" << endl;
-
-    //entrambe 
-
-    //traduzione input utente in input array 2d per effettuare il movimento nella scacchiera
-    string inputMovement = "a1 b2";
-    vector<int> input = traduttore::traduci(inputMovement);
-
-    cout << "Check regina: " << regina::moveReginaCheck(inputMovement) << endl;
-    cout << endl;
-    cout << "Check torre: " << torre::moveTorreCheck(inputMovement) << endl;
-    cout << endl;
-    cout << input.at(0) << input.at(1) << input.at(2) << input.at(3) << endl;
-    cout << endl;
-    cout << "Pedine vuote: " << middlePieces::check(board, input.at(0), input.at(1), input.at(2), input.at(3)) << endl;
-
-    //cout << "input movement: " << inputmovement << endl;
-
-
-
-    //effettuo check precondizioni e, eventualmente, muovo la pedina
-    /*if (pedone::movePedoneCapCheck(inputmovement) == true) {
-        cout << pedone::movePedoneCapCheck(inputmovement) << endl;
-        board.movePedina(input.at(0), input.at(1), input.at(2), input.at(3));
+    cout << "\n------------------\n";
+    //DEBUG RANDOM
+    /*while(cont<6) {
+        cout << "\n------------------\n";
+        white.autoMove(board);
+        board.printScacchiera();
+        cout << "\n------------------\n";
+        cont++;
     }*/
-
+    //DEBUG UTENTE
+    board.movePedina(4, 6, 4, 5);
+    board.movePedina(4, 7, 4, 6);
+    board.movePedina(4, 6, 5, 5);
+    board.movePedina(5, 5, 4, 5);
     board.printScacchiera();
-    //------------------------------------
-    //DEBUG RE
-    cout << "----------------------"; 
-    string s = "D4 C4";
-    cout <<"\n" << "DEBUG RE"<<"\n";
-    if (re::moveReCheck(s)) cout << "OK!!\n";
-    //DEBUG CAVALLO
-    cout << "----------------------";
-    s = "A4 C3";
-    cout << "\n" << "DEBUG CAVALLO" << "\n";
-    if (cavallo::moveCavalloCheck(s)) cout << "OK!!\n";
-    else cout << "NO!!\n";
+
+    cout << "\n\n------------------\n\n\n";
+
 }
