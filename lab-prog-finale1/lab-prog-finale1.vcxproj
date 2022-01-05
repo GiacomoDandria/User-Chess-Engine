@@ -142,24 +142,26 @@
     <ClCompile Include="alfiere.cpp" />
     <ClCompile Include="cavallo.cpp" />
     <ClCompile Include="lab-prog-finale1.cpp" />
-    <ClCompile Include="middlePiecesCheck.cpp" />
+    <ClCompile Include="middlePieces.cpp" />
     <ClCompile Include="pedone.cpp" />
     <ClCompile Include="re.cpp" />
     <ClCompile Include="regina.cpp" />
     <ClCompile Include="scacchiera.cpp" />
     <ClCompile Include="torre.cpp" />
     <ClCompile Include="traduttore.cpp" />
+	<ClCompile Include="computer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alfiere.h" />
     <ClInclude Include="cavallo.h" />
-    <ClInclude Include="middlePiecesCheck.h" />
+    <ClInclude Include="middlePieces.h" />
     <ClInclude Include="pedone.h" />
     <ClInclude Include="re.h" />
     <ClInclude Include="regina.h" />
     <ClInclude Include="scacchiera.h" />
     <ClInclude Include="torre.h" />
     <ClInclude Include="traduttore.h" />
+	<ClInclude Include="computer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

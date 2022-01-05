@@ -1,7 +1,5 @@
 #include "torre.h"
 
-/*TODO: - controllare che le caselle in mezzo a dove la pedina vuole muoversi non siano gia occupate*/
-
 /*NB: il movimento delle pedine maiuscole o minuscole non cambia, perché la torre può muoversi
 		  sia verticalmente che orizzontalmente senza costrizioni*/
 bool torre::moveTorreCheck(std::string inputMovement) {
