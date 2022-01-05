@@ -3,9 +3,7 @@
 
 
 /*TODO: - aggiungere funzioni di check situazioni speciali subito dopo il move o nel main
-        - aggiungere distruttore
-        - aggiungere il remove dopo che una pedina e'
-          stata mangiata(nel Move)  
+        - aggiungere distruttore  
         - aggiungere controllo pedone */
 
 
@@ -67,12 +65,12 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
         if (!pedone::movePedoneCheck(position))
             return false;
     }*/
-
+    
     //parte MOVE
     board[toNumber][toLetter] = board[fromNumber][fromLetter];
     board[fromNumber][fromLetter] = 0x20;
 
-    //remove pedina mangiata dal vector computer (CHASE function per accedere solo al mangiato
+    //CONTROLLI SPECIALI 
     //senno' rischio di sovrascrivere il pezzo appena mosso
     return true;
 }

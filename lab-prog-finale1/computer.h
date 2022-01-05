@@ -2,7 +2,10 @@
 #include<iostream>
 #include<random>
 #include<string>
+#include<vector>
+#include<algorithm>
 #include"scacchiera.h"
+#include"traduttore.h"
 
 struct computer {
 	computer();
@@ -10,9 +13,9 @@ struct computer {
 
 	class NoCorrectInfoConstructor{}; //classe per lanciare eccezioni
 	static std::string returnValue(int);
-	static void removePiece(std::string);
+	void removePiece(std::string);
 	int getSize();
-	void autoMove(scacchiera &);
+	std::string autoMove(scacchiera &);
 private:
 	//vettore contenente coordinate dei pezzi
 	std::vector <std::string> coordinate{};

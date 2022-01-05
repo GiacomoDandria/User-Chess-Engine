@@ -1,6 +1,5 @@
 #include"computer.h"
-#include"scacchiera.h"
-#include"traduttore.h"
+
 
 //-------------------------------------------------------------------------------
 /*TODO: Verifico che nel caso non venga inserito alcuna definizione ('w' or 'b')
@@ -69,7 +68,7 @@ int computer::getSize() {
 }
 
 //funzione automossa
-void computer::autoMove(scacchiera & board1) {
+std::string computer::autoMove(scacchiera & board1) {
     bool flag = true;
     /*muovo random la pedina con l'uso della scacchiera
       il flag diventa true quando la mossa e' stata effettuata
@@ -96,6 +95,8 @@ void computer::autoMove(scacchiera & board1) {
         }
 
     } while (flag);
+
+    return "";
 }
 
 //restituisce una posizione random all'interno della scacchiera
@@ -126,4 +127,11 @@ std::string randomPosition() {
         position = "H" + (std::to_string(number));
     //ritorno la stringa che contiene una coordinata RANDOM
     return position;
+}
+
+//funzione remove piece
+void computer::removePiece(const std::string s)
+{
+    if (std::find(computer::coordinate.begin(), computer::coordinate.end(), s) != computer::coordinate.end())
+        computer::coordinate.erase(std::find(computer::coordinate.begin(), computer::coordinate.end(), s));
 }
