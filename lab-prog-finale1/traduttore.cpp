@@ -71,7 +71,8 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
         toNumber = traduttore::traduttoreNumber(inputMovement[4] - '0');
     }
     catch (std::invalid_argument e) {
-        std::cout << "Inserire input validi di seguito: " << std::endl;
+       // std::cout << "  Input non validi " << std::endl;
+        std::vector<int> vector{ -1, -1, -1, -1 };
     }
 
     std::vector<int> vector{ fromLetter, fromNumber, toLetter, toNumber };

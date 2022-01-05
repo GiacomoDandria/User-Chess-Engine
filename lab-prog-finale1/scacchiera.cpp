@@ -24,6 +24,10 @@ scacchiera::scacchiera() : board{
   la mossa sara' esegita correttamente, la funzione ritornera' TRUE   */
 
 bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int toNumber) {
+    //controllo che le posizioni siano valide
+    if (fromLetter < 0 || fromNumber < 0 || toLetter < 0 || toNumber < 0)
+        return false;
+
     char frompiece = scacchiera::board[fromNumber][fromLetter];
     char topiece = scacchiera::board[toNumber][toLetter];
     std::string position = traduttore::traduciReverse(fromLetter, fromNumber, toLetter, toNumber);
