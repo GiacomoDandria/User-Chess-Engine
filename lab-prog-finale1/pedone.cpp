@@ -1,46 +1,56 @@
 #include "pedone.h"
 
 /*TODO: - controllare che il pednoe non possa mangiare andando avanti, ma solo di lato.
-		  Lanciare eccezione se si vuole muovere avanti in una casella occupata
-		- aggiungere possibilita di muoversi di due caselle avanti durante il primo turno*/
+		  Lanciare eccezione se si vuole muovere avanti in una casella occupata */
 
-//movimento pedone maiuscolo
-bool pedone::movePedoneCapCheck(std::string inputMovement) {
-
-	//traduzione degli input da "giocatore umano" a indici array 2D
-	std::vector<int> input = traduttore::traduci(inputMovement);
-
-	//SIMPLE FORWARD MOVEMENT:
-	//controllo condizioni di movimento pedine
-	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1) {
-		return true;
-	}
-	//DORWARD EATING MOVEMENT:
-	//controllo condizioni di movimento pedine
-	else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) + 1) {
-		return true;
-	}
-	return false;
-}
-
-//movimento pedone minuscolo
-bool pedone::movePedoneLowcaseCheck(std::string inputMovement) {
+bool pedone::movePedoneCheck(std::string inputMovement)
+{
 	//controlli precondizioni della stringa di input
 	if (inputMovement.length() != 5)
+	{
 		return false;
-
+	}
+	
 	//traduzione degli input da "giocatore umano" a indici array 2D
 	std::vector<int> input = traduttore::traduci(inputMovement);
-
-	//SIMPLE FORWARD MOVEMENT:
-	//controllo condizioni di movimento pedine
-	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1) {
-		return true;
+	
+	if(scacchiera::getPiece(input.at(0), input.at(1)) == "P")
+	{
+		//SIMPLE FORWARD MOVEMENT
+		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		{
+			return true;
+		}
+		//OBLIQUE EATING MOVEMENT
+		else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) + 1) 
+		{
+			return true;
+		}
+		//DOUBLE BOX MOVEMENT
+		else if(input.at(1) == 1 && input.at(3) == 3 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		{
+			return true;
+		}
+		return false;
 	}
-	//DORWARD EATING MOVEMENT:
-	//controllo condizioni di movimento pedine
-	else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) - 1) {
-		return true;
+	if(scacchiera::getPiece(input.at(0), input.at(1)) == "p")
+	{
+		//SIMPLE FORWARD MOVEMENT
+		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20) 
+		{
+			return true;
+		}
+		//OBLIQUE EATING MOVEMENT
+		else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) - 1) 
+		{
+			return true;
+		}
+		//DOUBLE BOX MOVEMENT
+		else if(input.at(1) == 6 && input.at(3) == 4 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		{
+			return true;
+		}
+		return false;
 	}
 	return false;
 }

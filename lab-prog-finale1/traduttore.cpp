@@ -74,8 +74,8 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
         std::cout << "Inserire input validi di seguito: " << std::endl;
     }
 
-    std::vector<int> vector{ fromLetter, fromNumber, toLetter, toNumber };
-    return vector;
+    std::vector<int> vettore{ fromLetter, fromNumber, toLetter, toNumber };
+    return vettore;
 }
 
 //Funzione TRADUCI REVERSE INT->STRING
