@@ -16,8 +16,7 @@ scacchiera::scacchiera() : board{
     { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
     { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
     { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't' },
-} {
-}
+} 
 /*Nella funzione movePedina della classe scacchiera, prima della mossa vengono eseguiti i controlli
   necessari ad evitare sovrapposizioni di pedine della stessa squadra e di mosse valide. Per fare 
   questo utilizzo i check delle pedine, riconoscendone il tipo tramite la funzione getPiece. Quando
