@@ -8,6 +8,8 @@
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"
+#include <string>
+#include<vector>
 
 
 
@@ -22,6 +24,8 @@ public:
     void printScacchiera();
 
     char getPiece(int orizz, int vert);
+
+    std::vector<int> findRe(char re);
 };
 
 

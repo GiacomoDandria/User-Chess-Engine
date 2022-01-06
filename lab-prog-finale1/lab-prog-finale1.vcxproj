@@ -150,6 +150,7 @@
     <ClCompile Include="torre.cpp" />
     <ClCompile Include="traduttore.cpp" />
 	<ClCompile Include="computer.cpp" />
+	<ClCompile Include="scacco.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alfiere.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="torre.h" />
     <ClInclude Include="traduttore.h" />
 	<ClInclude Include="computer.h" />
+	<ClInclude Include="scacco.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

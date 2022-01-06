@@ -12,6 +12,7 @@
 #include "torre.h"
 #include"middlePieces.h"
 #include"computer.h"
+#include "scacco.h"
 
 
 
