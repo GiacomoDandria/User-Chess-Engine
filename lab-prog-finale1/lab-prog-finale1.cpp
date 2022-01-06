@@ -22,6 +22,7 @@ using namespace std;
 int main() {
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
+    string temp = ""; //stringa per contenere l'inserimento dell'utente
     scacchiera board; //Scacchiera dove verra' giocata la partita
     //RICHIESTA
     //Richiesta modalità gioco
@@ -33,7 +34,14 @@ int main() {
     
     //controllo correttezza modalita'
     while (flag) {   
-        cin >> mod;
+        cin.clear();
+        getline(cin,temp);
+
+        if (temp.length() > 1)          //controllo che l'input sia solo di un char
+            mod = 's';
+        else
+            mod = temp[0];
+
         if (mod == 'c' || mod == 'C' || mod == 'u' || mod == 'U' || mod == 'q' || mod == 'Q')
             flag = false;
         else {
@@ -46,14 +54,14 @@ int main() {
     } 
     cout << "\n-----------------------------------------------------------------------\n"; 
 
-    //-------------------
+    //--------------------
     //INIZIO CASI PARTITA
-    //-------------------
+    //--------------------
     switch (mod)
     {
     //Quit case
     case('q'): case('Q'): {
-        cout << "\n        QUIT, BYE   \n\n\n";
+        cout << "\n        QUIT, BYE!   \n\n\n";
         return 0;
     }
 
@@ -63,32 +71,37 @@ int main() {
         computer b('b');        //Virtual black
         int cont = 0;          //contatore mosse
         string temp = " ";     //stringa temporanea per conservare le coordinate
-
-        while (cont < 1) {
+        while (cont < 10) {
             temp = a.autoMove(board);
             b.removePiece(temp);
+            //RIMUOVO PER DEBUG
+            board.printScacchiera();
+            cout << "\n";
+            //RIMUOVO PER DEBUG
             temp = b.autoMove(board);
             a.removePiece(temp);
+            board.printScacchiera();
+            cout << "\n";
             cont++;
         }
-        board.printScacchiera();
+        //board.printScacchiera();
+        
         
         break;
     }
-    
     //Caso computer vs utente
     case('u') : case ('U'):{
         //VARIABILI
         srand((unsigned)time(0));
         int ran = rand() % 2;        //valore int per la scelta w & b random
         int cont = 0;                //contatore per il numero di mosse (PER DEBUG)
-        char colora = 'w';           //colore giocatore A
-        char colorb='w';             //colore giocatore B
+        char colora = ' ';           //colore giocatore A
+        char colorb = ' ';           //colore giocatore B
+        bool fineturno = true;       //bool per gestire il turno dell'utente
         vector <int> move;           //conserva le mosse riechieste dall'utente
         string request = "";         //conserva le richieste dell'utente
 
-
-        //Random colori pc vs user
+        //RANDOM colori pc vs user
         if (ran == 1) {
             colora = 'w';
             colorb = 'b';
@@ -97,59 +110,59 @@ int main() {
             colora = 'b';
             colorb = 'w';
         }
-        //inizializzazione
+        //Inizializzazione giocatori
         computer utente (colora);
         computer computer (colorb);
 
-        flag = true;               //riutilizzo il flag iniziale per far giocare prima il bianco
+        flag = true;                                                       //riutilizzo il flag iniziale per far giocare prima il bianco
         cout << "\n   w = WHITE   b=BLACK ";
         cout << "   Coordinate: (LN LN)  Scacchiera: (XX XX)\n";
         cout << "\n-----------------------------------------------------------------------\n";
         cout << "\n     UTENTE: " << colora << "  COMPUTER: " << colorb<<"\n\n";
        
-
         //INIZIO GIOCATA
-        if (colora == 'w')                                                 //se bianco l'utente gioca per primo
+        if (colora == 'w')                                                 //se l'utente e' bianco gioca per primo
             flag = false;
 
         while (cont < 10) {
+            fineturno = true;
             request = "";
+            //Gioca l'utente
             if (flag == false) {                                            //utile per far giocare prima il bianco
                 cout << "------TOCCA ALL' UTENTE------\n";
-                cout << "  Inserire le coordinate: ";
 
-                //Buffer clear & input delle coordinate
-                cin.clear();
-                fflush(stdin);
-                getline(cin, request);                                      //stringa contenente le coordinate
-                if (request.compare("XX XX") == 0 || request.compare("xx xx") == 0)
-                    board.printScacchiera();
-                
+                while (fineturno) {
+                    cout << "  Inserire le coordinate: ";
 
-                //move = traduttore::traduci(request);//traduco le coordinate in modo tale da usare move 
-                //while (board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3))) {
-                //    cout << "  Coordinate non consentite, riprovare:";
-                //}
-                
+                    //Buffer clear & input delle coordinate
+                    cin.clear();
+                    getline(cin, request);                                  //stringa contenente le coordinate
+                    if (request.compare("XX XX") == 0 || request.compare("xx xx") == 0) 
+                        board.printScacchiera();
+                    else {
+                        cout << "\n";
+                        move = traduttore::traduci(request);                //traduco le coordinate in modo tale da usare move 
+                        /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
+                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) { 
+                            cout << "\n   Coordinate non consentite, riprovare \n\n";
+                            cout << "  --------------------------------------\n\n";
+                        }
+                        else
+                            fineturno = false;
+                    }
+                }
             }
-            //gioca il computer
+            //Gioca il computer
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
             computer.autoMove(board);
-            //board.printScacchiera();
-
             
+            //Fine ciclo turno
             flag = false;
             cont++;
         }
-
-
-
         break;
     }
-        
     }
-
-
 
     cout << "\n\n\n"; // Per prendere spazio dal fondo
 }

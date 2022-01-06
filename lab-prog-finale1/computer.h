@@ -3,6 +3,7 @@
 #include<random>
 #include<string>
 #include<vector>
+#include <sstream>
 #include<algorithm>
 #include"scacchiera.h"
 #include"traduttore.h"
@@ -24,5 +25,6 @@ private:
 };
 
 //HELPER FUNCTION
-std::string randomPosition();
+std::string randomPosition(std::string s);
+
 

@@ -70,21 +70,24 @@ int computer::getSize() {
 //funzione automossa
 std::string computer::autoMove(scacchiera & board1) {
     bool flag = true;
+    std::vector <int> move;
     /*muovo random la pedina con l'uso della scacchiera
       il flag diventa true quando la mossa e' stata effettuata
       correttamente.In caso contrario continua a cercare di muovere fino a che 
       non muove una pedina. */
 
     int n = computer::coordinate.size(); //dimensione del vector per estrarre random le coordinate
+    
     do
     {
         
         srand((unsigned)time(0));           //scelgo random una pedina dal vector
         int r = std::rand() % (n);
         std::string s1 = computer::coordinate.at(r);
-        std::string s2 = randomPosition();  //scelgo random una posizione di destinazione
-        std::vector <int> move = traduttore::traduci(s1 + " " + s2);
-
+        //Controllo che tipo di pezzo è presente alle coordinate S1 e faccio una mossa random
+        std::string s2 = randomPosition(s1);  //scelgo random una posizione di destinazione
+        move = traduttore::traduci(s1 + " " + s2);
+        //std::cout << "\n MOSSA: " << s1 << " " << s2;
         //stampa la mossa per DEBUG
         //std::cout << "\nMOVE: " << move.at(0)<<move.at(1)<<move.at(2) <<move.at(3)<< "\n\n";
 
@@ -100,10 +103,11 @@ std::string computer::autoMove(scacchiera & board1) {
 }
 
 //restituisce una posizione random all'interno della scacchiera
-std::string randomPosition() {
-    int letter = 0;
-    int number = 0;
+std::string randomPosition(std::string s) {
+    char letter = 0;
+    char number = 0;
     std::string position = "";
+
     srand((unsigned)time(0));
     letter = (std::rand() % 8) +1;
     srand((unsigned)time(0));
@@ -126,6 +130,7 @@ std::string randomPosition() {
     else if (letter == 8)
         position = "H" + (std::to_string(number));
     //ritorno la stringa che contiene una coordinata RANDOM
+
     return position;
 }
 
@@ -135,3 +140,4 @@ void computer::removePiece(const std::string s)
     if (std::find(computer::coordinate.begin(), computer::coordinate.end(), s) != computer::coordinate.end())
         computer::coordinate.erase(std::find(computer::coordinate.begin(), computer::coordinate.end(), s));
 }
+

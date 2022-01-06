@@ -10,6 +10,7 @@
 #include"traduttore.h"
 
 
+
 class scacchiera {
     char board[8][8];
 

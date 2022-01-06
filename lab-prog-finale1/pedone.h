@@ -5,6 +5,6 @@
 
 struct pedone 
 {
-	bool pedone::movePedoneCheck(std::string inputMovement);
+	static bool movePedoneCheck(std::string inputMovement);
 };
 
