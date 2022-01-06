@@ -14,10 +14,10 @@ bool pedone::movePedoneCheck(std::string inputMovement)
 	//traduzione degli input da "giocatore umano" a indici array 2D
 	std::vector<int> input = traduttore::traduci(inputMovement);
 	
-	if(scacchiera::getPiece(input.at(0), input.at(1)) == "P")
+	if(board.getPiece(input.at(0), input.at(1)) == "P")
 	{
 		//SIMPLE FORWARD MOVEMENT
-		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && board.getPiece(input.at(2), input.at(3)) == 0x20)
 		{
 			return true;
 		}
@@ -27,16 +27,16 @@ bool pedone::movePedoneCheck(std::string inputMovement)
 			return true;
 		}
 		//DOUBLE BOX MOVEMENT
-		else if(input.at(1) == 1 && input.at(3) == 3 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		else if(input.at(1) == 1 && input.at(3) == 3 && board.getPiece(input.at(2), input.at(3)) == 0x20)
 		{
 			return true;
 		}
 		return false;
 	}
-	if(scacchiera::getPiece(input.at(0), input.at(1)) == "p")
+	if(board.getPiece(input.at(0), input.at(1)) == "p")
 	{
 		//SIMPLE FORWARD MOVEMENT
-		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20) 
+		if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && board.getPiece(input.at(2), input.at(3)) == 0x20) 
 		{
 			return true;
 		}
@@ -46,7 +46,7 @@ bool pedone::movePedoneCheck(std::string inputMovement)
 			return true;
 		}
 		//DOUBLE BOX MOVEMENT
-		else if(input.at(1) == 6 && input.at(3) == 4 && scacchiera::getPiece(input.at(2), input.at(3)) == 0x20)
+		else if(input.at(1) == 6 && input.at(3) == 4 && board.getPiece(input.at(2), input.at(3)) == 0x20)
 		{
 			return true;
 		}
