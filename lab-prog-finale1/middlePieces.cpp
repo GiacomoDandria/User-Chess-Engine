@@ -10,7 +10,7 @@ bool middlePieces::check(scacchiera board, int fromLetter, int fromNumber, int t
 	if (fromLetter == toLetter) {
 		for (auto i = std::min(fromNumber, toNumber); i <= std::max(fromNumber, toNumber); i++) {
 			if (board.getPiece(i, fromLetter) != 0x20) {
-				std::cout << "fromletter==toletter" << std::endl;
+				//std::cout << "fromletter==toletter" << std::endl;
 				return false;
 			}
 		}
@@ -20,7 +20,7 @@ bool middlePieces::check(scacchiera board, int fromLetter, int fromNumber, int t
 	if (fromNumber == toNumber) {
 		for (auto i = std::min(fromLetter, toLetter); i <= std::max(fromLetter, toLetter); i++) {
 			if (board.getPiece(i, fromNumber) != 0x20) {
-				std::cout << "fromnumber==tonumber" << std::endl;
+				//std::cout << "fromnumber==tonumber" << std::endl;
 				return false;
 			}
 		}
@@ -28,22 +28,41 @@ bool middlePieces::check(scacchiera board, int fromLetter, int fromNumber, int t
 
 	//caso 3: numero di spostamenti nella direzione verticale è uguale a quello in orizzontale: movimento obliquo
 	if (std::abs(toLetter - fromLetter) == std::abs(toNumber - fromNumber)) {
+		//caso 3.1: movimento nella direzione in basso-destra
 		if (toLetter > fromLetter && toNumber > fromNumber) {
 			int temp = fromNumber;
-			for(auto i = fromLetter; i <= toLetter; i++) {
+			for (auto i = fromLetter; i <= toLetter; i++) {
 				fromNumber += 1;
 				if (board.getPiece(i, fromNumber) != 0x20)
 					return false;
 			}
 		}
+		//caso 3.2: movimento in direzione in alto-destra
 		if (toLetter > fromLetter && toNumber < fromNumber) {
-
+			int temp = fromNumber;
+			for (auto i = fromLetter; i >= toLetter; i--) {
+				fromNumber += 1;
+				if (board.getPiece(i, fromNumber) != 0x20)
+					return false;
+			}
 		}
+		//caso 3.3: movimento in direzione in basso-sinistra
 		if (toLetter < fromLetter && toNumber > fromNumber) {
-
+			int temp = fromNumber;
+			for (auto i = fromLetter; i <= toLetter; i++) {
+				fromNumber -= 1;
+				if (board.getPiece(i, fromNumber) != 0x20)
+					return false;
+			}
 		}
+		//caso 3.4: movimento in direzione in alto-sinistra
 		if (toLetter < fromLetter && toNumber < fromNumber) {
-
+			int temp = fromNumber;
+			for (auto i = fromLetter; i >= toLetter; i--) {
+				fromNumber -= 1;
+				if (board.getPiece(i, fromNumber) != 0x20)
+					return false;
+			}
 		}
 	}
 	return true;

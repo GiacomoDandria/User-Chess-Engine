@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include<exception>
+#include <string>
+#include<vector>
 
 
 class scacchiera {
@@ -14,6 +16,8 @@ public:
     void printScacchiera();
 
     char getPiece(int orizz, int vert);
+
+    std::vector<int> findRe(char re);
 };
 
 

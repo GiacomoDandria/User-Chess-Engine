@@ -9,6 +9,7 @@
 #include "torre.h"
 #include"middlePieces.h"
 #include"computer.h"
+#include "scacco.h"
 
 
 
@@ -124,4 +125,10 @@ int main() {
     cout << "\n" << "DEBUG CAVALLO" << "\n";
     if (cavallo::moveCavalloCheck(s)) cout << "OK!!\n";
     else cout << "NO!!\n";
+
+    //DEBUG SCACCO
+    cout << "--------------------" << endl;
+    cout << "Debug Scacco" << endl;
+    //scacco::check(board);
+    cout << "Il re e' sotto scacco? " << scacco::check(board, 'r') << endl;
 }
