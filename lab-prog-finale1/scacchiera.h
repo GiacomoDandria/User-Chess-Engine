@@ -1,6 +1,13 @@
 #pragma once
 #include<iostream>
 #include<exception>
+#include"cavallo.h"
+#include"re.h"
+#include"regina.h"
+#include"pedone.h"
+#include"alfiere.h"
+#include"torre.h"
+#include"traduttore.h"
 #include <string>
 #include<vector>
 
@@ -11,7 +18,7 @@ class scacchiera {
 public:
     scacchiera();
 
-    void movePedina(int fromLetter, int fromNumber, int toLetter, int toNumber);
+    bool movePedina(int fromLetter, int fromNumber, int toLetter, int toNumber);
 
     void printScacchiera();
 

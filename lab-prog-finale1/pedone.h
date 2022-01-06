@@ -3,9 +3,8 @@
 #include "scacchiera.h"
 #include "traduttore.h"
 
-struct pedone {
-	static bool movePedoneCapCheck(std::string inputMovement);
-
-	static bool movePedoneLowcaseCheck(std::string inputMovement);
+struct pedone 
+{
+	bool pedone::movePedoneCheck(std::string inputMovement);
 };
 
