@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include<exception>
+#include <string>
+#include<vector>
 #include"cavallo.h"
 #include"re.h"
 #include"regina.h"
@@ -8,8 +10,7 @@
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"
-#include <string>
-#include<vector>
+#include"middlePieces.h"
 
 
 

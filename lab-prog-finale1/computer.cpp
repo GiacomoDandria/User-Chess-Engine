@@ -87,14 +87,14 @@ std::string computer::autoMove(scacchiera & board1) {
         //Controllo che tipo di pezzo è presente alle coordinate S1 e faccio una mossa random
         std::string s2 = randomPosition(s1);  //scelgo random una posizione di destinazione
         move = traduttore::traduci(s1 + " " + s2);
-        //std::cout << "\n MOSSA: " << s1 << " " << s2;
-        //stampa la mossa per DEBUG
-        //std::cout << "\nMOVE: " << move.at(0)<<move.at(1)<<move.at(2) <<move.at(3)<< "\n\n";
-
-        if (board1.movePedina(move.at(0), move.at(1), move.at(2), move.at(3))) //muovo la pedina 
+        
+        if (middlePieces::check(board1, move.at(0), move.at(1), move.at(2), move.at(3)))
         {
-            flag = false;
-            computer::coordinate[r] = s2; //aggiorno posizione pedina nel vector
+            //if (board1.movePedina(move.at(0), move.at(1), move.at(2), move.at(3))) //muovo la pedina 
+            //{
+            //    flag = false;
+            //        computer::coordinate[r] = s2; //aggiorno posizione pedina nel vector
+            //}
         }
 
     } while (flag);

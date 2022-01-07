@@ -46,7 +46,7 @@ int main() {
         if (mod == 'c' || mod == 'C' || mod == 'u' || mod == 'U' || mod == 'q' || mod == 'Q')
             flag = false;
         else {
-            cout << "\n  -----------------------------------\n";
+            cout << "\n  -----------------------------------\n ";
             cout << "\n  Carattere non corretto, RIPROVA\n";
             cout << "\n  -----------------------------------\n\n";
             cout << "  Scegli la modalita' di gioco: ";
@@ -69,7 +69,7 @@ int main() {
     //Caso computer vs computer
     case('c'): case ('C'): {
         computer a('w');       //Virtual white
-        computer b('b');        //Virtual black
+        computer b('b');       //Virtual black
         int cont = 0;          //contatore mosse
         string temp = " ";     //stringa temporanea per conservare le coordinate
         while (cont < 10) {
