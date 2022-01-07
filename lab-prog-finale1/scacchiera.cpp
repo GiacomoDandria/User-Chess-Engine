@@ -8,19 +8,19 @@
 
 
 //scacchiera per debug funzione di check scacco
-/*scacchiera::scacchiera() : board{
-    {'T', 'C', 'A', 'D', 0x20, 'A', 'C', 'T'},
+scacchiera::scacchiera() : board{
+    {'T', 'C', 'A', 'D', 'r', 'A', 'C', 'T'},
     { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-    { 0x20, 0x20, 'A', 0x20, 0x20, 0x20, 0x20, 0x20},
-    { 0x20, 0x20, 0x20, 'r', 0x20, 0x20, 0x20, 0x20},
-    { 0x20, 0x20, 0x20, 'R', 0x20, 0x20, 0x20, 0x20},
+    { 0x20, 'A', 0x20, 0x20, 'T', 'T', 0x20, 0x20},
     { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
+    { 0x20, 0x20, 0x20, 'R', 0x20, 0x20, 'A', 0x20},
+    { 0x20, 0x20, 0x20, 'T', 'R', 0x20, 0x20, 0x20},
     { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
     { 't', 'c', 'a', 'd', 0x20, 'a', 'c', 't' },
 } {
-}*/
+}
 
-scacchiera::scacchiera() : board{
+/*scacchiera::scacchiera() : board{
     {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
     { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
     { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
@@ -30,7 +30,7 @@ scacchiera::scacchiera() : board{
     { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
     { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't' },
 } {
-}
+}*/
 /*Nella funzione movePedina della classe scacchiera, prima della mossa vengono eseguiti i controlli
   necessari ad evitare sovrapposizioni di pedine della stessa squadra e di mosse valide. Per fare
   questo utilizzo i check delle pedine, riconoscendone il tipo tramite la funzione getPiece. Quando

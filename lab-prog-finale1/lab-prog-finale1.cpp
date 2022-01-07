@@ -20,6 +20,15 @@ using namespace std;
         carattere dal primo input*/
 
 int main() {
+    /* DEBUG MIDDLE-PIECES
+    scacchiera board;
+    board.printScacchiera();
+    string inputString = "b2 c3";
+    vector<int> input = traduttore::traduci(inputString);
+    cout << "Piece1: " << board.getPiece(input.at(1), input.at(0)) << endl;
+    cout << "Piece2: " << board.getPiece(input.at(3), input.at(2)) << endl;
+    cout << "Middle pieces: " << middlePieces::check(board, input.at(0), input.at(1), input.at(2), input.at(3)) << endl;*/
+
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
     string temp = ""; //stringa per contenere l'inserimento dell'utente
@@ -164,4 +173,5 @@ int main() {
     }
 
     cout << "\n\n\n"; // Per prendere spazio dal fondo
+    
 }
