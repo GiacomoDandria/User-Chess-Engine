@@ -3,10 +3,11 @@
 #include<random>
 #include<string>
 #include<vector>
-#include <sstream>
+#include<sstream>
 #include<algorithm>
 #include"scacchiera.h"
 #include"traduttore.h"
+#include "middlePieces.h"
 
 struct computer {
 	computer();

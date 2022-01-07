@@ -10,7 +10,6 @@
 #include "re.h"
 #include "cavallo.h"
 #include "torre.h"
-#include"middlePieces.h"
 #include"computer.h"
 #include "scacco.h"
 
@@ -32,7 +31,6 @@ int main() {
     cout << "\n  --------------------------------------";
     cout << "\n\n  C (Computer VS Computer) o U(Computer VS Utente) o q(Quit)\n\n";
     cout << "  Scegli la modalita' di gioco: ";
-    
     //controllo correttezza modalita'
     while (flag) {   
         cin.clear();
@@ -101,7 +99,7 @@ int main() {
         bool fineturno = true;       //bool per gestire il turno dell'utente
         vector <int> move;           //conserva le mosse riechieste dall'utente
         string request = "";         //conserva le richieste dell'utente
-
+       
         //RANDOM colori pc vs user
         if (ran == 1) {
             colora = 'w';

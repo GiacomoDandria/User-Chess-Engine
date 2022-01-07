@@ -10,7 +10,7 @@
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"
-#include"middlePieces.h"
+
 
 
 

@@ -4,7 +4,7 @@
 
 /*controllo che le caselle attraverso le quali una pediana si vuole muovere siano effettivamente vuote*/
 
-bool middlePieces::check(scacchiera board, int fromLetter, int fromNumber, int toLetter, int toNumber) {
+bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int toLetter, int toNumber) {
 	//controllo che le posizioni della scacchiera tra quella di partenza e quella di arrivo siano vuote
 	//caso 1: lettera di partenza uguale a quella di arrivo: movimento in verticale
 	if (fromLetter == toLetter) {
