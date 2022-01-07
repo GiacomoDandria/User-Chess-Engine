@@ -8,7 +8,7 @@
 
 
 //scacchiera per debug funzione di check scacco
-scacchiera::scacchiera() : board{
+/*scacchiera::scacchiera() : board{
     {'T', 'C', 'A', 'D', 'r', 'A', 'C', 'T'},
     { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
     { 0x20, 'A', 0x20, 0x20, 'T', 'T', 0x20, 0x20},
@@ -18,9 +18,9 @@ scacchiera::scacchiera() : board{
     { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
     { 't', 'c', 'a', 'd', 0x20, 'a', 'c', 't' },
 } {
-}
+}*/
 
-/*scacchiera::scacchiera() : board{
+scacchiera::scacchiera() : board{
     {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
     { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
     { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
@@ -30,7 +30,7 @@ scacchiera::scacchiera() : board{
     { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
     { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't' },
 } {
-}*/
+}
 /*Nella funzione movePedina della classe scacchiera, prima della mossa vengono eseguiti i controlli
   necessari ad evitare sovrapposizioni di pedine della stessa squadra e di mosse valide. Per fare
   questo utilizzo i check delle pedine, riconoscendone il tipo tramite la funzione getPiece. Quando
@@ -93,12 +93,17 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
 }
 
 void scacchiera::printScacchiera() {
+    int counter = 8;
     for (auto i = 0; i < 8; i++) {
+        std::cout << counter << " ";
         for (auto j = 0; j < 8; j++) {
-            std::cout << board[i][j] << " ";
+            std::cout << board[i][j];
         }
+        counter--;
         std::cout << std::endl;
     }
+    std::cout << std::endl;
+    std::cout << "  ABCDEFGH";
 }
 
 char scacchiera::getPiece(int vert, int orizz) {
