@@ -1,7 +1,6 @@
 #include <iostream>
 #include<vector>
 #include "scacchiera.h"
-#include "pedone.h"
 #include "alfiere.h"
 #include "regina.h"
 #include "re.h"

@@ -2,7 +2,7 @@
 #include<exception>
 #include <iostream>
 #include<vector>
-#include<exception>
+#include<exception> //c'è due volte
 #include<string>
 
 class traduttore {
