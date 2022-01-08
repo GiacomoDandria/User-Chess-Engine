@@ -7,16 +7,7 @@
         - aggiungere controllo pedone */
 
 
-scacchiera::scacchiera() : board{
-    {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
-    { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
-    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-    { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
-    { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't' },
-} 
+scacchiera::scacchiera() {} 
 /*Nella funzione movePedina della classe scacchiera, prima della mossa vengono eseguiti i controlli
   necessari ad evitare sovrapposizioni di pedine della stessa squadra e di mosse valide. Per fare 
   questo utilizzo i check delle pedine, riconoscendone il tipo tramite la funzione getPiece. Quando
@@ -71,10 +62,10 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     	//traduzione degli input da "giocatore umano" a indici array 2D
     	std::vector<int> input = traduttore::traduci(position);
 	
-    	if(board.getPiece(input.at(0), input.at(1)) == "P")
+    	if(frompiece == 'P')
 	    {
 	    	//SIMPLE FORWARD MOVEMENT
-	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && board.getPiece(input.at(2), input.at(3)) == 0x20)
+	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && topiece == 0x20)
 	    	{
 		    	return true;
 	    	}
@@ -84,16 +75,16 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
 	    		return true;
 	    	}
 	    	//DOUBLE BOX MOVEMENT
-	    	else if(input.at(1) == 1 && input.at(3) == 3 && board.getPiece(input.at(2), input.at(3)) == 0x20)
+	    	else if(input.at(1) == 1 && input.at(3) == 3 && topiece == 0x20)
 	    	{
 	    		return true;
 	    	}
 	    	return false;
 	    }
-	    if(board.getPiece(input.at(0), input.at(1)) == "p")
+	    if(frompiece == 'p')
 	    {
 	    	//SIMPLE FORWARD MOVEMENT
-	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && board.getPiece(input.at(2), input.at(3)) == 0x20) 
+	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && topiece == 0x20) 
 		    {
 		    	return true;
 		    }
@@ -103,7 +94,7 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
 	    		return true;
 		    }
 		    //DOUBLE BOX MOVEMENT
-	    	else if(input.at(1) == 6 && input.at(3) == 4 && board.getPiece(input.at(2), input.at(3)) == 0x20)
+	    	else if(input.at(1) == 6 && input.at(3) == 4 && topiece == 0x20)
 	    	{
 		    	return true;
 		    }
