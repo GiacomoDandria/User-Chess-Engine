@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="alfiere.cpp" />
     <ClCompile Include="cavallo.cpp" />
-    <ClCompile Include="lab-prog-finale1.cpp" />
+    <ClCompile Include="scacchiera-main.cpp" />
     <ClCompile Include="middlePieces.cpp" />
     <ClCompile Include="pedone.cpp" />
     <ClCompile Include="re.cpp" />
@@ -164,6 +164,7 @@
     <ClInclude Include="traduttore.h" />
 	<ClInclude Include="computer.h" />
 	<ClInclude Include="scacco.h" />
+	<ClInclude Include="scacchiera-main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
