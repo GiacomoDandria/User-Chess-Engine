@@ -127,7 +127,7 @@ int main() {
                 cout << "------TOCCA ALL' UTENTE------\n";
 
                 while (fineturno) {
-                    cout << "  Inserire le coordinate: ";
+                    cout << "\n  Inserire le coordinate: ";
 
                     //Buffer clear & input delle coordinate
                     cin.clear();
