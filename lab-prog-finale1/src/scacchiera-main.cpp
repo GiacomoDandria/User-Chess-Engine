@@ -72,9 +72,9 @@ int main() {
             //RIMUOVO PER DEBUG
             board.printScacchiera();
             cout << "\n";
-            //RIMUOVO PER DEBUG
             temp = b.autoMove(board);
             a.removePiece(temp);
+            //RIMUOVO PER DEBUG
             board.printScacchiera();
             cout << "\n";
             cont++;
@@ -92,6 +92,8 @@ int main() {
         int cont = 0;                //contatore per il numero di mosse (PER DEBUG)
         char colora = ' ';           //colore giocatore A
         char colorb = ' ';           //colore giocatore B
+        char rea = ' ';
+        char reb = ' ';
         bool fineturno = true;       //bool per gestire il turno dell'utente
         vector <int> move;           //conserva le mosse riechieste dall'utente
         string request = "";         //conserva le richieste dell'utente
@@ -136,21 +138,33 @@ int main() {
                         board.printScacchiera();
                     else {
                         cout << "\n";
+                       
                         move = traduttore::traduci(request);                //traduco le coordinate in modo tale da usare move 
-                        /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
-                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) { 
-                            cout << "\n   Coordinate non consentite, riprovare \n\n";
-                            cout << "  --------------------------------------\n\n";
+                        
+                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
+                                cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                cout << "  --------------------------------------\n\n";
                         }
                         else
-                            fineturno = false;
+                            fineturno = false;                                                    //controllo mossa utente consentita
+                        
+                        
+                       
                     }
                 }
             }
+            //if(scacco::check(board, rea))
+            //      cout<<"\n Scacco \n;
+            rea = 'r';
+            cout << "\n UTENTE: " << scacco::check(board, rea) << "\n";
+            cout << "\n RE UTENTE: " << rea << "\n";
             //Gioca il computer
+            reb = 'R';
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
             computer.autoMove(board);
+            cout << "\n COMPUTER: " << scacco::check(board, reb) << "\n";
             
+
             //Fine ciclo turno
             flag = false;
             cont++;
