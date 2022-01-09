@@ -6,6 +6,7 @@ include_directories (h)
 
 add_executable(scacchiera
 		src/scacchiera-main.cpp
+		src/computer.cpp
 		src/alfiere.cpp
 		src/cavallo.cpp
 		src/middlePieces.cpp
