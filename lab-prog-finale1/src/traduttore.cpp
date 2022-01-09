@@ -40,10 +40,10 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
     const std::string validLetters = "ABCDEFGHabcdefgh";
     const std::string validNumbers = "12345678";
 
-    int fromLetter = NULL;
-    int fromNumber = NULL;
-    int toLetter = NULL;
-    int toNumber = NULL;
+    int fromLetter = -1;
+    int fromNumber = -1;
+    int toLetter = -1;
+    int toNumber = -1;
 
     try {
         if (inputMovement.length() > 5) {
