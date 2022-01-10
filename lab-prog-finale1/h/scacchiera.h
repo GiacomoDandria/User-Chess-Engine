@@ -21,6 +21,8 @@ public:
 
     bool movePedina(int fromLetter, int fromNumber, int toLetter, int toNumber);
 
+    bool checkWin(char);
+
     void printScacchiera();
 
     char getPiece(int orizz, int vert);

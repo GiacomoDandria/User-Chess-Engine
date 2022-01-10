@@ -18,8 +18,11 @@ int main() {
 
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
+    bool vittoria = false; //La partita va avanti finchè uno dei due vince
     string temp = ""; //stringa per contenere l'inserimento dell'utente
     scacchiera board; //Scacchiera dove verra' giocata la partita
+    
+
     //RICHIESTA
     //Richiesta modalità gioco
     cout << "\n  --------------------------------------";
@@ -66,22 +69,29 @@ int main() {
         computer b('b');       //Virtual black
         int cont = 0;          //contatore mosse
         string temp = " ";     //stringa temporanea per conservare le coordinate
-        while (cont < 10) {
+        while (cont < 10 && !vittoria) {
             temp = a.autoMove(board);
             b.removePiece(temp);
+            if (board.checkWin('r')) {
+                vittoria = true; //Fine partita
+                break;
+            }
             //RIMUOVO PER DEBUG
             board.printScacchiera();
             cout << "\n";
             temp = b.autoMove(board);
             a.removePiece(temp);
+            if (board.checkWin('R')) {
+                vittoria = true; //Fine partita
+                break;
+            }
             //RIMUOVO PER DEBUG
             board.printScacchiera();
             cout << "\n";
             cont++;
         }
         //board.printScacchiera();
-        
-        
+        // !! AGGIUNGO CONTROLLO PRESENZA RE !!
         break;
     }
     //Caso computer vs utente
@@ -121,7 +131,7 @@ int main() {
         if (colora == 'w')                                                 //se l'utente e' bianco gioca per primo
             flag = false;
 
-        while (true) {
+        while (!vittoria) {
             fineturno = true;
             request = "";
             //Gioca l'utente
@@ -203,6 +213,12 @@ int main() {
                     }
                 }
             }
+            //CONTROLLO VITTORIA UTENTE
+            if (board.checkWin(reb)) {
+                cout << "\n --L' UTENTE HA VINTO--" << endl;
+                vittoria = true; //Fine partita
+                break;
+            }
             //CONTROLLO COMPUTER SOTTO SCACCO
             if(scacco::check(board, reb))
                   cout<<"\n  SCACCO AL COMPUTER"<< endl;
@@ -211,6 +227,13 @@ int main() {
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
             computer.autoMove(board);
 
+            //CONTROLLO VITTORIA COMPUTER
+            if (board.checkWin(reb)) {
+                cout << "\n --IL COMPUTER HA VINTO--" << endl;
+                vittoria = true; //Fine partita
+                break;
+            }
+            
             //CONTROLLO UTENTE SOTTO SCACCO
             if (scacco::check(board, rea))
                 cout << "\n  SCACCO ALL'UTENTE" << endl;

@@ -9,14 +9,14 @@
 
 //scacchiera per debug funzione di check scacco
 //scacchiera::scacchiera() : board{
-//    {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
+//    {'T', 'C', 'A', 'D', 0x20, 'A', 'C', 'T'},
 //    { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
 //    { 0x20, 'A', 'a', 0x20, 'T', 'T', 'a', 0x20},
 //    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
 //    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 'A', 0x20},
 //    { 0x20, 0x20, 'A', 0x20, 0x20, 0x20, 0x20, 0x20},
 //    { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
-//    { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't'},
+//    { 't', 'c', 'a', 'd', 0x20, 'a', 'c', 't'},
 //} {
 //}
 
@@ -165,10 +165,22 @@ std::vector<int> scacchiera::findRe(char re) {
             if (board[i][j] == re) {
                 posizioneRe.push_back((int)i);
                 posizioneRe.push_back((int)j);
+                
             }
         }
     }
     return posizioneRe;
+}
+//Controllo presenza re per verificare la vittoria
+bool scacchiera::checkWin(char re) {
+    for (auto i = 0; i < 8; i++) {
+        for (auto j = 0; j < 8; j++) {
+            if (board[i][j] == re) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 
