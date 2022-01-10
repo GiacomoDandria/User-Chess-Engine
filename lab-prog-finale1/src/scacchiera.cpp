@@ -81,55 +81,8 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
             return false;
     }
     else if (frompiece == 'p' || frompiece == 'P') {
-        
-        //controlli precondizioni della stringa di input
-	    if (position.length() != 5)
-	    {
-	    	return false;
-	    }
-	
-    	//traduzione degli input da "giocatore umano" a indici array 2D
-    	std::vector<int> input = traduttore::traduci(position);
-	
-    	if(frompiece == 'P')
-	    {
-	    	//SIMPLE FORWARD MOVEMENT
-	    	if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) + 1 )&& (topiece == 0x20))
-	    	{
-		    	return true;
-	    	}
-		    //OBLIQUE EATING MOVEMENT
-		    else if ((input.at(2) == input.at(0) + 1 )|| (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) + 1))
-		    {
-	    		return true;
-	    	}
-	    	//DOUBLE BOX MOVEMENT
-	    	else if((input.at(1) == 1) && (input.at(3) == 3) && (topiece == 0x20))
-	    	{
-	    		return true;
-	    	}
-	    	return false;
-	    }
-	    if(frompiece == 'p')
-	    {
-	    	//SIMPLE FORWARD MOVEMENT
-	    	if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) - 1) && (topiece == 0x20)) 
-		    {
-		    	return true;
-		    }
-		    //OBLIQUE EATING MOVEMENT
-		    else if ((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) - 1))
-	    	{
-	    		return true;
-		    }
-		    //DOUBLE BOX MOVEMENT
-	    	else if((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20))
-	    	{
-		    	return true;
-		    }
-		    return false;
-    	}
-	    return false;
+        if (!scacchiera::pedoneCheck(position, frompiece, topiece))
+            return false;
     }
     
     //parte MOVE
@@ -183,7 +136,60 @@ bool scacchiera::checkWin(char re) {
     return true;
 }
 
+//-------------------
+// PEDONE CHECK
+//-------------------
 
+bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece) {
+    //controlli precondizioni della stringa di input
+    if (position.length() != 5)
+    {
+        return false;
+    }
+
+    //traduzione degli input da "giocatore umano" a indici array 2D
+    std::vector<int> input = traduttore::traduci(position);
+
+    if (frompiece == 'P')
+    {
+        //SIMPLE FORWARD MOVEMENT
+        if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) + 1) && (topiece == 0x20))
+        {
+            return true;
+        }
+        //OBLIQUE EATING MOVEMENT
+        else if ((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) + 1))
+        {
+            return true;
+        }
+        //DOUBLE BOX MOVEMENT
+        else if ((input.at(1) == 1) && (input.at(3) == 3) && (topiece == 0x20))
+        {
+            return true;
+        }
+        return false;
+    }
+    if (frompiece == 'p')
+    {
+        //SIMPLE FORWARD MOVEMENT
+        if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) - 1) && (topiece == 0x20))
+        {
+            return true;
+        }
+        //OBLIQUE EATING MOVEMENT
+        else if ((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) - 1))
+        {
+            return true;
+        }
+        //DOUBLE BOX MOVEMENT
+        else if ((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20))
+        {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
 
 
 

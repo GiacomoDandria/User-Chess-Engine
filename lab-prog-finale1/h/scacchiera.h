@@ -23,6 +23,8 @@ public:
 
     bool checkWin(char);
 
+    bool pedoneCheck(std::string position, char frompiece, char topiece);
+
     void printScacchiera();
 
     char getPiece(int orizz, int vert);

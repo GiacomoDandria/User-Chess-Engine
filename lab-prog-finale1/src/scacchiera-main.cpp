@@ -1,21 +1,10 @@
 #include "scacchiera-main.h"
 
 using namespace std;
-/*TODO: Sistemo i due input, o trovo il modo pulendo lo stream o leggendo una stringa al posto che il 
-        carattere dal primo input*/
+/*TODO: IL Pedone si muove in diagonale (forse c'e' un bug nel controllo del mangiare le pedine */
 
 int main() {
-    //scacchiera board;
-    //board.printScacchiera();
-    /* DEBUG MIDDLE-PIECES
-    scacchiera board;
-    board.printScacchiera();
-    string inputString = "b2 c3";
-    vector<int> input = traduttore::traduci(inputString);
-    cout << "Piece1: " << board.getPiece(input.at(1), input.at(0)) << endl;
-    cout << "Piece2: " << board.getPiece(input.at(3), input.at(2)) << endl;
-    cout << "Middle pieces: " << middlePieces::check(board, input.at(0), input.at(1), input.at(2), input.at(3)) << endl;*/
-
+    //VARIABILI
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
     bool vittoria = false; //La partita va avanti finchè uno dei due vince
@@ -52,9 +41,9 @@ int main() {
     } 
     cout << "\n-----------------------------------------------------------------------\n"; 
 
-    //--------------------
+    //---------------------
     //INIZIO CASI PARTITA
-    //--------------------
+    //---------------------
     switch (mod)
     {
     //Quit case
@@ -65,13 +54,15 @@ int main() {
 
     //Caso computer vs computer
     case('c'): case ('C'): {
-        computer a('w');       //Virtual white
-        computer b('b');       //Virtual black
-        int cont = 0;          //contatore mosse
-        string temp = " ";     //stringa temporanea per conservare le coordinate
+        computer a('w');                    //Virtual white
+        computer b('b');                    //Virtual black
+        int cont = 0;                       //contatore mosse
+        string temp = " ";                  //stringa temporanea per conservare le coordinate
         while (cont < 10 && !vittoria) {
             temp = a.autoMove(board);
             b.removePiece(temp);
+
+            //Verifico se il re BIANCO e' stato mangiato
             if (board.checkWin('r')) {
                 vittoria = true; //Fine partita
                 break;
@@ -81,6 +72,8 @@ int main() {
             cout << "\n";
             temp = b.autoMove(board);
             a.removePiece(temp);
+
+            //Verifico se il re NERO e' stato mangiato
             if (board.checkWin('R')) {
                 vittoria = true; //Fine partita
                 break;
@@ -136,7 +129,7 @@ int main() {
             request = "";
             //Gioca l'utente
             if (flag == false) {                                            //utile per far giocare prima il bianco
-                cout << "------TOCCA ALL' UTENTE------\n";
+                cout << "-------TOCCA ALL' UTENTE-------\n";
 
                 while (fineturno) {
                     cout << "\n  Inserire le coordinate: ";
@@ -144,8 +137,11 @@ int main() {
                     //Buffer clear & input delle coordinate
                     cin.clear();
                     getline(cin, request);                                  //stringa contenente le coordinate
-                    if (request.compare("XX XX") == 0 || request.compare("xx xx") == 0) 
+                    if (request.compare("XX XX") == 0 || request.compare("xx xx") == 0) {
+                        cout << "\n";
                         board.printScacchiera();
+                        cout << "\n";
+                    }   
                     else {
                         cout << "\n";
                        
@@ -157,10 +153,9 @@ int main() {
                             char t = board.getPiece(move.at(1), move.at(0));
                             string temp(1, t);
 
-                            string str = " ptadrc";cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
+                            string str = " ptadrc";
 
                                 if (str.find(temp)>0 && str.find(temp)<9) {
-                                    cout << "\n CONTROLLO PEDINA: " << str.find(temp) <<"TIPO PEDINA: "<< temp<< "\n";
                                     /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
                                     if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
                                         if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
