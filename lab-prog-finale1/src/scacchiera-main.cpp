@@ -146,9 +146,11 @@ int main() {
                             reb = 'R';
                             char t = board.getPiece(move.at(1), move.at(0));
                             string temp(1, t);
-                            string str = " ptadrc";
-                            cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
-                                if (str.find(temp)) {
+
+                            string str = " ptadrc";cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
+
+                                if (str.find(temp)>0 && str.find(temp)<9) {
+                                    cout << "\n CONTROLLO PEDINA: " << str.find(temp) <<"TIPO PEDINA: "<< temp<< "\n";
                                     /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
                                     if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
                                         if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
@@ -176,8 +178,7 @@ int main() {
                                 char t = board.getPiece(move.at(1), move.at(0));
                                 string temp (1,t);
                                 string str = " PTDRAC";
-                                cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
-                                if (str.find(temp)) {
+                                if (str.find(temp) > 0 && str.find(temp) < 9) {
                                     /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
                                     if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
                                         if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
@@ -202,15 +203,17 @@ int main() {
                     }
                 }
             }
-            //if(scacco::check(board, rea))
-            //      cout<<"\n Scacco \n;
-            cout << "\n UTENTE: " << scacco::check(board, rea) << "\n";
-            cout << "\n RE UTENTE: " << rea << "\n";
+            //CONTROLLO COMPUTER SOTTO SCACCO
+            if(scacco::check(board, reb))
+                  cout<<"\n  SCACCO AL COMPUTER"<< endl;
+
             //Gioca il computer
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
             computer.autoMove(board);
-            cout << "\n COMPUTER: " << scacco::check(board, reb) << "\n";
-            cout << "\n RE COMPUTER: " << reb << "\n";
+
+            //CONTROLLO UTENTE SOTTO SCACCO
+            if (scacco::check(board, rea))
+                cout << "\n  SCACCO ALL'UTENTE" << endl;
             
 
             //Fine ciclo turno

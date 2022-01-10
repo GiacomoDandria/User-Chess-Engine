@@ -6,7 +6,6 @@
 #include"cavallo.h"
 #include"re.h"
 #include"regina.h"
-#include"pedone.h"
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"

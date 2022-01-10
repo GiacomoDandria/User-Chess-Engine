@@ -94,17 +94,17 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     	if(frompiece == 'P')
 	    {
 	    	//SIMPLE FORWARD MOVEMENT
-	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) + 1 && topiece == 0x20)
+	    	if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) + 1 )&& (topiece == 0x20))
 	    	{
 		    	return true;
 	    	}
 		    //OBLIQUE EATING MOVEMENT
-		    else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) + 1) 
+		    else if ((input.at(2) == input.at(0) + 1 )|| (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) + 1))
 		    {
 	    		return true;
 	    	}
 	    	//DOUBLE BOX MOVEMENT
-	    	else if(input.at(1) == 1 && input.at(3) == 3 && topiece == 0x20)
+	    	else if((input.at(1) == 1) && (input.at(3) == 3) && (topiece == 0x20))
 	    	{
 	    		return true;
 	    	}
@@ -113,17 +113,17 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
 	    if(frompiece == 'p')
 	    {
 	    	//SIMPLE FORWARD MOVEMENT
-	    	if (input.at(0) == input.at(2) && input.at(3) == input.at(1) - 1 && topiece == 0x20) 
+	    	if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) - 1) && (topiece == 0x20)) 
 		    {
 		    	return true;
 		    }
 		    //OBLIQUE EATING MOVEMENT
-		    else if ((input.at(2) == input.at(0) + 1 || input.at(2) == input.at(0) - 1) && input.at(3) == input.at(1) - 1) 
+		    else if ((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1) && (input.at(3) == input.at(1) - 1))
 	    	{
 	    		return true;
 		    }
 		    //DOUBLE BOX MOVEMENT
-	    	else if(input.at(1) == 6 && input.at(3) == 4 && topiece == 0x20)
+	    	else if((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20))
 	    	{
 		    	return true;
 		    }
