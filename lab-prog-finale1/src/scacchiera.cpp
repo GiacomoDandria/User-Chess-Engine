@@ -8,17 +8,17 @@
 
 
 //scacchiera per debug funzione di check scacco
-/*scacchiera::scacchiera() : board{
-    {'T', 'C', 'A', 'D', 'r', 'A', 'C', 'T'},
-    { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-    { 0x20, 'A', 0x20, 0x20, 'T', 'T', 0x20, 0x20},
-    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
-    { 0x20, 0x20, 0x20, 'R', 0x20, 0x20, 'A', 0x20},
-    { 0x20, 0x20, 0x20, 'T', 'R', 0x20, 0x20, 0x20},
-    { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
-    { 't', 'c', 'a', 'd', 0x20, 'a', 'c', 't' },
-} {
-}*/
+//scacchiera::scacchiera() : board{
+//    {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
+//    { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+//    { 0x20, 'A', 'a', 0x20, 'T', 'T', 'a', 0x20},
+//    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
+//    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 'A', 0x20},
+//    { 0x20, 0x20, 'A', 0x20, 0x20, 0x20, 0x20, 0x20},
+//    { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
+//    { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't'},
+//} {
+//}
 
 scacchiera::scacchiera() : board{
     {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},

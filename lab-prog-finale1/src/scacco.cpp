@@ -117,7 +117,9 @@ bool scacco::check(scacchiera board, char inputRe) {
 		if (temp == d || temp == a) {
 			/*std::cout << "Pedina che sta facendo scacco: " << temp << std::endl;
 			std::cout << "scacco diagonali in alto a sx D-d o A-a" << std::endl;*/
-			return true;
+			if (middlePieces::check(board, i, counter1, re.at(0), re.at(1))) {
+				return true;
+			}
 		}
 		else if (temp == p || temp == r || temp == t || temp == c) {
 			break;
@@ -138,7 +140,9 @@ bool scacco::check(scacchiera board, char inputRe) {
 		if (temp == d || temp == a) {
 			/*std::cout << "Pedina che sta facendo scacco: " << temp << std::endl;
 			std::cout << "scacco diagonali in basso a dx D-d o A-a" << std::endl;*/
-			return true;
+			if (middlePieces::check(board, i, counter1, re.at(0), re.at(1))) {
+				return true;
+			}
 		}
 		else if (temp == p || temp == r || temp == t || temp == c) {
 			break;
@@ -159,10 +163,12 @@ bool scacco::check(scacchiera board, char inputRe) {
 		if (temp == d || temp == a) {
 			/*std::cout << "Pedina che sta facendo scacco: " << temp << std::endl;
 			std::cout << "scacco diagonali in basso a sx D-d o A-a" << std::endl;*/
-			return true;
+			if (middlePieces::check(board, i, counter1, re.at(0), re.at(1))) {
+				return true;
+			}
 		}
 		else if (temp == p || temp == r || temp == t || temp == c) {
-			break;
+			break;//CONVIENE METTERE RETURN FALSE???
 		}
 		counter3++;
 	}
@@ -180,7 +186,9 @@ bool scacco::check(scacchiera board, char inputRe) {
 		if (temp == d || temp == a) {
 			/*std::cout << "Pedina che sta facendo scacco: " << temp << std::endl;
 			std::cout << "scacco diagonali in alto a dx D-d o A-a" << std::endl;*/
-			return true;
+			if (middlePieces::check(board, i, counter1, re.at(0), re.at(1))) {
+				return true;
+			}
 		}
 		else if (temp == p || temp == r || temp == t || temp == c) {
 			break;

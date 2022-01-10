@@ -121,7 +121,7 @@ int main() {
         if (colora == 'w')                                                 //se l'utente e' bianco gioca per primo
             flag = false;
 
-        while (cont < 10) {
+        while (true) {
             fineturno = true;
             request = "";
             //Gioca l'utente
@@ -140,14 +140,63 @@ int main() {
                         cout << "\n";
                        
                         move = traduttore::traduci(request);                //traduco le coordinate in modo tale da usare move 
-                        
-                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
-                                cout << "\n   Coordinate non consentite, riprovare \n\n";
-                                cout << "  --------------------------------------\n\n";
-                        }
-                        else
-                            fineturno = false;                                                    //controllo mossa utente consentita
-                        
+                        //controllo pedina bianca
+                        if (colora == 'w') {
+                            rea = 'r';
+                            reb = 'R';
+                            char t = board.getPiece(move.at(1), move.at(0));
+                            string temp(1, t);
+                            string str = " ptadrc";
+                            cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
+                                if (str.find(temp)) {
+                                    /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
+                                    if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
+                                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
+                                            cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                            cout << "  --------------------------------------\n\n";
+                                        }
+                                        else
+                                            fineturno = false;
+                                    }
+                                    else {
+                                        cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                        cout << "  --------------------------------------\n\n";
+                                    }  
+                                }   
+                                else {
+                                    cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                    cout << "  --------------------------------------\n\n";
+                                }
+                            }
+                            
+                        //controllo pedina nera
+                        if (colora == 'b') {
+                                rea = 'R';
+                                reb = 'r';
+                                char t = board.getPiece(move.at(1), move.at(0));
+                                string temp (1,t);
+                                string str = " PTDRAC";
+                                cout << "\n STAMPA FIND: " << (str.find(temp)) << "\n";
+                                if (str.find(temp)) {
+                                    /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
+                                    if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
+                                        if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
+                                            cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                            cout << "  --------------------------------------\n\n";
+                                        } 
+                                        else
+                                            fineturno = false;
+                                    }
+                                    else {
+                                        cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                        cout << "  --------------------------------------\n\n";
+                                    }
+                                }
+                                else {
+                                    cout << "\n   Coordinate non consentite, riprovare \n\n";
+                                    cout << "  --------------------------------------\n\n";
+                                }
+                            }
                         
                        
                     }
@@ -155,14 +204,13 @@ int main() {
             }
             //if(scacco::check(board, rea))
             //      cout<<"\n Scacco \n;
-            rea = 'r';
             cout << "\n UTENTE: " << scacco::check(board, rea) << "\n";
             cout << "\n RE UTENTE: " << rea << "\n";
             //Gioca il computer
-            reb = 'R';
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
             computer.autoMove(board);
             cout << "\n COMPUTER: " << scacco::check(board, reb) << "\n";
+            cout << "\n RE COMPUTER: " << reb << "\n";
             
 
             //Fine ciclo turno
