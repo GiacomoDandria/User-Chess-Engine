@@ -1,26 +1,12 @@
 #include "scacchiera-main.h"
-#include "randomMerda.h"
+#include "randomMoves.h"
 
 using namespace std;
 /*TODO: IL Pedone si muove in diagonale (forse c'e' un bug nel controllo del mangiare le pedine */
 
 int main() {
 
-    scacchiera tavola;
-    string s = "h8";
-    char c = 'c';
-    fstream file;
-    file.open("log.txt", ios::out);
-    cout<<"\n"<<randomPosition(s, c)<<"\n";
-    
-    tavola.printScacchiera();
-
-
-
-
-    //---------------------------------------------------------------------------
-    //Tolgo i commenti post debug della funzione random
-    //---------------------------------------------------------------------------
+   
     //VARIABILI
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
@@ -75,12 +61,12 @@ int main() {
         computer b('b');                    //Virtual black
         int cont = 0;                       //contatore mosse
         string temp = " ";                  //stringa temporanea per conservare le coordinate
-        while (cont < 10 && !vittoria) {
+        while (cont < 50 && !vittoria) {
             temp = a.autoMove(board);
             b.removePiece(temp);
 
             //Verifico se il re BIANCO e' stato mangiato
-            if (board.checkWin('r')) {
+            if (board.checkWin('R')) {
                 vittoria = true; //Fine partita
                 break;
             }
@@ -91,7 +77,7 @@ int main() {
             a.removePiece(temp);
 
             //Verifico se il re NERO e' stato mangiato
-            if (board.checkWin('R')) {
+            if (board.checkWin('r')) {
                 vittoria = true; //Fine partita
                 break;
             }
@@ -250,23 +236,34 @@ int main() {
             if (scacco::check(board, rea))
                 cout << "\n  SCACCO ALL'UTENTE" << endl;
             
-
+    //            break;
             //Fine ciclo turno
             flag = false;
             cont++;
-
-            //Stampa su un file della mossa fatta---------------------------------------------
-            document::add_line("log.txt", temp);
         }
-
-        
-        
-        
-        
-
         break;
     }
     }
+    //        computer.autoMove(board);
+    //        //CONTROLLO VITTORIA COMPUTER
+    //        if (board.checkWin(reb)) {
+    //            cout << "\n --IL COMPUTER HA VINTO--" << endl;
+    //            vittoria = true; //Fine partita
+    //            break;
+    //        }
+    //        
+    //        //CONTROLLO UTENTE SOTTO SCACCO
+    //        if (scacco::check(board, rea))
+    //            cout << "\n  SCACCO ALL'UTENTE" << endl;
+    //        
+
+    //        //Fine ciclo turno
+    //        flag = false;
+    //        cont++;
+    //    }
+    //    break;
+    //}
+    //}
 
     file.close();
     cout << "\n\n\n"; // Per prendere spazio dal fondo

@@ -77,15 +77,18 @@ std::string computer::autoMove(scacchiera & board1) {
       non muove una pedina. */
 
     int n = computer::coordinate.size(); //dimensione del vector per estrarre random le coordinate
-    
+    std::string s1 = "";
+    std::string s2 = "";
     do
     {
         
         srand((unsigned)time(0));           //scelgo random una pedina dal vector
         int r = std::rand() % (n);
-        std::string s1 = computer::coordinate.at(r);
-        //Controllo che tipo di pezzo è presente alle coordinate S1 e faccio una mossa random
-        std::string s2 = randomPosition(s1);  //scelgo random una posizione di destinazione
+        s1 = computer::coordinate.at(r);
+        std::vector<int> temp = traduttore::traduci(s1+" "+s1);
+        char type = board1.getPiece(temp.at(1), temp.at(2));
+        
+        s2 = randomMove(board1, s1, type);
         move = traduttore::traduci(s1 + " " + s2);
         
         if (middlePieces::check(board1, move.at(0), move.at(1), move.at(2), move.at(3)))
@@ -98,8 +101,8 @@ std::string computer::autoMove(scacchiera & board1) {
         }
 
     } while (flag);
-
-    return "";
+    
+    return s1+" "+s2;
 }
 
 //restituisce una posizione random all'interno della scacchiera
@@ -137,7 +140,10 @@ std::string randomPosition(std::string s) {
 //funzione remove piece
 void computer::removePiece(const std::string s)
 {
-    if (std::find(computer::coordinate.begin(), computer::coordinate.end(), s) != computer::coordinate.end())
-        computer::coordinate.erase(std::find(computer::coordinate.begin(), computer::coordinate.end(), s));
+    std::string str = s.substr(3, 2);
+    if (std::find(computer::coordinate.begin(), computer::coordinate.end(), str) != computer::coordinate.end()) {
+           computer::coordinate.erase(std::find(computer::coordinate.begin(), computer::coordinate.end(), str));
+        
+    }
 }
 

@@ -7,7 +7,8 @@
 #include<algorithm>
 #include"scacchiera.h"
 #include"traduttore.h"
-#include "middlePieces.h"
+#include"middlePieces.h"
+#include"randomMoves.h"
 
 struct computer {
 	computer();
