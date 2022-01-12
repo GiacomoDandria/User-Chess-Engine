@@ -18,4 +18,5 @@ add_executable(scacchiera
 		src/torre.cpp
 		src/traduttore.cpp
 		src/randomMoves.cpp
+		src/document.cpp
  )

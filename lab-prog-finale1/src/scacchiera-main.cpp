@@ -241,6 +241,8 @@ int main() {
             flag = false;
             cont++;
         }
+        //Stampa su file
+        document::add_line("log.txt", temp);
         break;
     }
     }
@@ -265,7 +267,6 @@ int main() {
     //}
     //}
 
-    file.close();
     cout << "\n\n\n"; // Per prendere spazio dal fondo
     
 }
