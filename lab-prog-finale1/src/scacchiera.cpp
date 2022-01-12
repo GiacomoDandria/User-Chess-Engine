@@ -191,6 +191,46 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
     return false;
 }
 
+//stampa la scacchiera a video
+void scacchiera::printScacchieraVideo()
+{
+    int counter = 8;
+    for (auto i = 0; i < 8; i++) {
+        std::cout << counter << " ";
+        for (auto j = 0; j < 8; j++)
+        {
+            std::cout << board[i][j];
+        }
+        counter--;
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "  ABCDEFGH";
+    std::cout << "/n" << "/n" << "/n";
+    Sleep(1000000);
+}
+
+//stampa la scacchiera su file
+void scacchiera::printScacchieraFile(std::string outputFile)
+{
+    std::fstream fileWriter;
+    fileWriter.open(outputFile, std::fstream::out);
+    int counter = 8;
+    for (auto i = 0; i < 8; i++) {
+        fileWriter << counter << " ";
+        for (auto j = 0; j < 8; j++)
+        {
+            fileWriter << board[i][j];
+        }
+        counter--;
+        fileWriter << std::endl;
+    }
+    fileWriter << std::endl;
+    fileWriter << "  ABCDEFGH";
+    fileWriter << "\n\n\n";
+    fileWriter.close();
+}
+
 
 
 

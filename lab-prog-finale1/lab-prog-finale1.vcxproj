@@ -151,6 +151,8 @@
     <ClCompile Include="traduttore.cpp" />
 	<ClCompile Include="computer.cpp" />
 	<ClCompile Include="scacco.cpp" />
+	<ClCompile Include="replay.cpp" />
+	<ClCompile Include="document.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alfiere.h" />
@@ -165,6 +167,8 @@
 	<ClInclude Include="computer.h" />
 	<ClInclude Include="scacco.h" />
 	<ClInclude Include="scacchiera-main.h" />
+	<ClInclude Include="replay.h" />
+	<ClInclude Include="document.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

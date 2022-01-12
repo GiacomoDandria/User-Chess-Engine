@@ -9,6 +9,10 @@
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"
+#include <windows.h>
+//PER MAC invece di windows.h
+//#include<unistd.h>
+#include<fstream>
 
 
 
@@ -30,6 +34,10 @@ public:
     char getPiece(int orizz, int vert);
 
     std::vector<int> findRe(char re);
+
+    void printScacchieraVideo();
+
+    void printScacchieraFile(std::string outputFile);
 };
 
 
