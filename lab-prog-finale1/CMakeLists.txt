@@ -17,4 +17,5 @@ add_executable(scacchiera
 		src/scacco.cpp
 		src/torre.cpp
 		src/traduttore.cpp
- "src/randomMerda.cpp" "h/randomMerda.h")
+		src/randomMoves.cpp
+ )

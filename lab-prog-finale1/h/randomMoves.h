@@ -8,7 +8,16 @@
 #include "traduttore.h"
 #include "middlePieces.h"
 
-std::string randomPosition(std::string, char);
+std::string randomMove(scacchiera & ,std::string, char);
+
 bool rangeCheck(int colonna, int riga);
+
+bool friendlyCheckU(scacchiera&, int colonna, int riga);
+
+bool friendlyCheckL(scacchiera&, int colonna, int riga);
+
+bool someone(scacchiera&, int colonna, int riga);
+
+
 
 std::string traduzionePerRandom(int colonna, int riga);
