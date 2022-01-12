@@ -65,6 +65,8 @@ int main() {
             temp = a.autoMove(board);
             b.removePiece(temp);
 
+            document::add_line("log.txt", temp);
+
             //Verifico se il re BIANCO e' stato mangiato
             if (board.checkWin('R')) {
                 vittoria = true; //Fine partita
@@ -240,9 +242,10 @@ int main() {
             //Fine ciclo turno
             flag = false;
             cont++;
+
+            //Stampa su file
+            document::add_line("log.txt", request);
         }
-        //Stampa su file
-        document::add_line("log.txt", temp);
         break;
     }
     }

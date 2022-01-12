@@ -10,6 +10,7 @@
 #include"torre.h"
 #include"traduttore.h"
 #include <windows.h>
+#include "document.h"
 //PER MAC invece di windows.h
 //#include<unistd.h>
 #include<fstream>
