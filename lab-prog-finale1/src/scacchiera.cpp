@@ -88,6 +88,9 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     board[toNumber][toLetter] = board[fromNumber][fromLetter];
     board[fromNumber][fromLetter] = 0x20;
 
+    //Controllo promozione
+    scacchiera::promozioneCheck();
+
     return true;
 }
 
@@ -230,6 +233,17 @@ void scacchiera::printScacchieraFile(std::string outputFile)
     fileWriter.close();
 }
 
+void scacchiera::promozioneCheck() {
+    // Contro riga 8 (sopra). i e' l'indice delle colonne 
+    for (int i = 0; i < 8; i++) {
+        if(getPiece(0,i)== 'p')
+            board[0][i] = 'd';
+    }
+    for (int i = 0; i < 8; i++) {
+        if (getPiece(7, i) == 'P')
+            board[7][i] = 'D';
+    }
+}
 
 
 

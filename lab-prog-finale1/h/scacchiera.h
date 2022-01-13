@@ -30,6 +30,8 @@ public:
 
     bool pedoneCheck(std::string position, char frompiece, char topiece);
 
+    void promozioneCheck();
+
     void printScacchiera();
 
     char getPiece(int orizz, int vert);
