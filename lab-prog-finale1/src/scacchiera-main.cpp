@@ -63,6 +63,8 @@ int main() {
             temp = a.autoMove(board);
             b.removePiece(temp);
 
+            document::add_line("log.txt", temp);
+
             //Verifico se il re BIANCO e' stato mangiato
             if (board.checkWin('R')) {
                 cout << "\n Vittoria BIANCHI" << endl;
@@ -238,14 +240,37 @@ int main() {
             if (scacco::check(board, rea))
                 cout << "\n  SCACCO ALL'UTENTE" << endl;
             
-
+    //            break;
             //Fine ciclo turno
             flag = false;
             cont++;
+
+            //Stampa su file
+            document::add_line("log.txt", request);
         }
         break;
     }
     }
+    //        computer.autoMove(board);
+    //        //CONTROLLO VITTORIA COMPUTER
+    //        if (board.checkWin(reb)) {
+    //            cout << "\n --IL COMPUTER HA VINTO--" << endl;
+    //            vittoria = true; //Fine partita
+    //            break;
+    //        }
+    //        
+    //        //CONTROLLO UTENTE SOTTO SCACCO
+    //        if (scacco::check(board, rea))
+    //            cout << "\n  SCACCO ALL'UTENTE" << endl;
+    //        
+
+    //        //Fine ciclo turno
+    //        flag = false;
+    //        cont++;
+    //    }
+    //    break;
+    //}
+    //}
 
     cout << "\n\n\n"; // Per prendere spazio dal fondo
     

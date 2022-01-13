@@ -63,7 +63,7 @@ computer::computer(char c) {                       //costruttore pedine white o 
 }
 
 int computer::getSize() {
-    int n = computer::coordinate.size();
+    int n = (int)computer::coordinate.size();
     return n;
 }
 
@@ -76,7 +76,7 @@ std::string computer::autoMove(scacchiera & board1) {
       correttamente.In caso contrario continua a cercare di muovere fino a che 
       non muove una pedina. */
 
-    int n = computer::coordinate.size(); //dimensione del vector per estrarre random le coordinate
+    int n = (int)computer::coordinate.size(); //dimensione del vector per estrarre random le coordinate
     std::string s1 = "";
     std::string s2 = "";
     do
@@ -89,17 +89,18 @@ std::string computer::autoMove(scacchiera & board1) {
         char type = board1.getPiece(temp.at(1), temp.at(2));
         
         s2 = randomMove(board1, s1, type);
-        move = traduttore::traduci(s1 + " " + s2);
+        std::string daTradurre = s1 + " " + s2;
+        move = traduttore::traduci(daTradurre);
         
         if (middlePieces::check(board1, move.at(0), move.at(1), move.at(2), move.at(3)))
         {
             if (board1.movePedina(move.at(0), move.at(1), move.at(2), move.at(3))) //muovo la pedina 
             {
                 flag = false;
-                    computer::coordinate[r] = s2; //aggiorno posizione pedina nel vector
+                document::add_line("log.txt", daTradurre);
+                computer::coordinate[r] = s2; //aggiorno posizione pedina nel vector
             }
         }
-
     } while (flag);
     
     return s1+" "+s2;
