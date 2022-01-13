@@ -205,15 +205,16 @@ void scacchiera::printScacchieraVideo()
     }
     std::cout << std::endl;
     std::cout << "  ABCDEFGH";
-    std::cout << "/n" << "/n" << "/n";
-    Sleep(1000000);
+    std::cout << "\n" << "\n" << "\n";
+    //Non e' un secondo, ma altrimenti ci mette troppo
+    Sleep(100);
 }
 
 //stampa la scacchiera su file
 void scacchiera::printScacchieraFile(std::string outputFile)
 {
     std::fstream fileWriter;
-    fileWriter.open(outputFile, std::fstream::out);
+    fileWriter.open(outputFile, std::fstream::app);
     int counter = 8;
     for (auto i = 0; i < 8; i++) {
         fileWriter << counter << " ";
