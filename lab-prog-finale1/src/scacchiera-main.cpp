@@ -157,14 +157,11 @@ int main() {
                             reb = 'R';
                             char t = board.getPiece(move.at(1), move.at(0));
                             string temp(1, t);
-                            cout << "\n STRING DA PARAGONARE:" << temp << ":::\n";
                             string str = " ptadrc";
 
                                 if (str.find(temp)>0 && str.find(temp)<9) {
-                                    std::cout << "\n SONO DENTRO AL FIND\n";
                                     /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
                                     if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
-                                        std::cout << "\n SONO DENTRO AL MIDDLE PIECES\n";
                                         if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
                                             cout << "\n   Coordinate non consentite, riprovare \n\n";
                                             cout << "  --------------------------------------\n\n";
@@ -217,7 +214,7 @@ int main() {
             }
             //CONTROLLO VITTORIA UTENTE
             if (board.checkWin(reb)) {
-                cout << "\n --L' UTENTE HA VINTO--" << endl;
+                cout << "\n --L'UTENTE HA VINTO--" << endl;
                 vittoria = true; //Fine partita
                 break;
             }

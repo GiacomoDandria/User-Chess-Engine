@@ -11,18 +11,19 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 	if (fromLetter == toLetter) {
 		//caso 1.1: movimento verticale verso il basso
 		if (fromNumber < toNumber) {
-			for (auto i = fromNumber + 1; i <= toNumber; i++) {
+			for (auto i = fromNumber + 1; i < toNumber; i++) {
 			//DEBUG TOGLI PER LA BELLA
 			//std::cout << "asfoadifjsioad: " << board.getPiece(i, fromLetter) << std::endl;
 				if (board.getPiece(i, fromLetter) != 0x20) {
 					//std::cout << "fromletter==toletter-verticale-verso-basso" << std::endl;
 					return false;
-				}
+				}	
 			}
+			//return true; //AGGIUNTO DA LOSQUARCIO PER DEBUG13
 		}
 		//caso 1.2: movimento verticale verso l'alto
 		else if (fromNumber > toNumber) {
-			for (auto i = fromNumber - 1; i >= toNumber; i--) {
+			for (auto i = fromNumber - 1; i > toNumber; i--) {
 			//std::cout << "asfoadifjsioad: " << board.getPiece(i, fromLetter) << std::endl;
 				if (board.getPiece(i, fromLetter) != 0x20) {
 					//std::cout << "fromletter==toletter-verticale-verso-alto" << std::endl;
@@ -36,7 +37,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 	if (fromNumber == toNumber) {
 		//caso 2.1: movimento orizzontale verso destra
 		if (fromLetter < toLetter) {
-			for (auto i = fromLetter + 1; i <= toLetter; i++) {
+			for (auto i = fromLetter + 1; i < toLetter; i++) {
 			//std::cout << "asfoadifjsioad: " << board.getPiece(fromNumber, i) << std::endl;
 				if (board.getPiece(fromNumber, i) != 0x20) {
 					//std::cout << "fromnumber==tonumber-verso-destra" << std::endl;
@@ -46,7 +47,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 		}
 		//caso 2.2: movimento orizzontale verso sinistra
 		else if (fromLetter > toLetter) {
-			for (auto i = fromLetter - 1; i >= toLetter; i--) {
+			for (auto i = fromLetter - 1; i > toLetter; i--) {
 			//std::cout << "asfoadifjsioad: " << board.getPiece(fromNumber, i) << std::endl;
 				if (board.getPiece(fromNumber, i) != 0x20) {
 					//std::cout << "fromnumber==tonumber-verso-sinistra" << std::endl;
@@ -62,7 +63,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 		//caso 3.1: movimento nella direzione in basso-destra--FUNZIONA
 		if (toLetter > fromLetter && toNumber > fromNumber) {
 			int temp = fromNumber + 1;
-			for (auto i = fromLetter + 1; i <= toLetter; i++) {
+			for (auto i = fromLetter + 1; i < toLetter; i++) {
 				fromNumber += 1;
 				//std::cout << "asofiajfioa: " << board.getPiece(fromNumber, i) << std::endl;
 				if (board.getPiece(fromNumber, i) != 0x20) {
@@ -81,7 +82,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 			std::cout << "To number: " << toNumber << std::endl;*/
 
 
-			for (auto i = fromLetter + 1; i <= toLetter; i++) {
+			for (auto i = fromLetter + 1; i < toLetter; i++) {
 				fromNumber -= 1;
 				//std::cout << "asofiajfioa: " << board.getPiece(fromNumber, i) << std::endl;
 				if (board.getPiece(fromNumber, i) != 0x20) {
@@ -98,7 +99,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 			//std::cout << "From number: " << fromNumber << std::endl;
 			//std::cout << "To letter: " << toLetter << std::endl;
 			//std::cout << "To number: " << toNumber << std::endl;
-			for (auto i = fromLetter - 1; i >= toLetter; i--) {
+			for (auto i = fromLetter - 1; i > toLetter; i--) {
 				fromNumber += 1;
 
 				//std::cout << "asofiajfioa: " << board.getPiece(fromNumber, i) << std::endl;
@@ -116,7 +117,7 @@ bool middlePieces::check(scacchiera& board, int fromLetter, int fromNumber, int 
 			//std::cout << "From number: " << fromNumber << std::endl;
 			//std::cout << "To letter: " << toLetter << std::endl;
 			//std::cout << "To number: " << toNumber << std::endl;
-			for (auto i = fromLetter - 1; i >= toLetter; i--) {
+			for (auto i = fromLetter - 1; i > toLetter; i--) {
 				fromNumber -= 1;
 				//std::cout << "asofiajfioa: " << board.getPiece(fromNumber, i) << std::endl;
 				if (board.getPiece(fromNumber, i) != 0x20) {
