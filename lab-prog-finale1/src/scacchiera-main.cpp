@@ -1,12 +1,10 @@
 #include "scacchiera-main.h"
-#include "randomMoves.h"
 
 using namespace std;
-/*TODO: IL Pedone si muove in diagonale (forse c'e' un bug nel controllo del mangiare le pedine */
+/*TODO: Sistemo input deve essere cc & uc  */
 
 int main() {
 
-   
     //VARIABILI
     char mod = ' ';   //Conserva la modalita' di gioco
     bool flag = true;
@@ -27,7 +25,7 @@ int main() {
         cin.clear();
         getline(cin,temp);
 
-        if (temp.length() > 1)          //controllo che l'input sia solo di un char
+        if (temp.length() > 2)          //controllo che l'input sia solo di un char
             mod = 's';
         else
             mod = temp[0];
@@ -67,6 +65,7 @@ int main() {
 
             //Verifico se il re BIANCO e' stato mangiato
             if (board.checkWin('R')) {
+                cout << "\n Vittoria BIANCHI" << endl;
                 vittoria = true; //Fine partita
                 break;
             }
@@ -78,6 +77,7 @@ int main() {
 
             //Verifico se il re NERO e' stato mangiato
             if (board.checkWin('r')) {
+                cout << "\n Vittoria NERI" << endl;
                 vittoria = true; //Fine partita
                 break;
             }
@@ -86,8 +86,8 @@ int main() {
             cout << "\n";
             cont++;
         }
-        //board.printScacchiera();
-        // !! AGGIUNGO CONTROLLO PRESENZA RE !!
+        cout << "\n\n";
+        board.printScacchiera();
         break;
     }
     //Caso computer vs utente
@@ -155,12 +155,14 @@ int main() {
                             reb = 'R';
                             char t = board.getPiece(move.at(1), move.at(0));
                             string temp(1, t);
-
+                            cout << "\n STRING DA PARAGONARE:" << temp << ":::\n";
                             string str = " ptadrc";
 
                                 if (str.find(temp)>0 && str.find(temp)<9) {
+                                    std::cout << "\n SONO DENTRO AL FIND\n";
                                     /*Se la mossa viene eseguita, fine turno, altrimenti richiedi le coordinate*/
                                     if (middlePieces::check(board, move.at(0), move.at(1), move.at(2), move.at(3))) {
+                                        std::cout << "\n SONO DENTRO AL MIDDLE PIECES\n";
                                         if (!(board.movePedina(move.at(0), move.at(1), move.at(2), move.at(3)))) {
                                             cout << "\n   Coordinate non consentite, riprovare \n\n";
                                             cout << "  --------------------------------------\n\n";

@@ -13,5 +13,6 @@
 #include "torre.h"
 #include"computer.h"
 #include "scacco.h"
+#include "randomMoves.h"
 
 int main();

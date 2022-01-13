@@ -50,13 +50,12 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
         return false;
     
     //SECONDO controllo: il pezzo sovrascrive uno dello stesso colore
-
     if (((frompiece >= 94) && (topiece >= 94)) || ((frompiece < 94) && (frompiece > 32) && (topiece < 94) &&
         (topiece > 32)))
     {
         return false;
     }
-
+    
     //TERZO controllo: mossa valida per la pedina mossa (tramite check)
     if (frompiece == 'c' || frompiece == 'C') {         //check cavallo
         if (!cavallo::moveCavalloCheck(position))
