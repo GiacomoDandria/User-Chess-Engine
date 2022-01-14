@@ -10,8 +10,8 @@
 #include"torre.h"
 #include"traduttore.h"
 #include "document.h"
-#include <windows.h>
 //PER LINUX invece di windows.h togliere il commento dalla seguente riga
+#include <windows.h>
 //#include<unistd.h>
 #include<fstream>    
 
