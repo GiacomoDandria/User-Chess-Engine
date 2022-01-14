@@ -9,9 +9,9 @@
 #include"alfiere.h"
 #include"torre.h"
 #include"traduttore.h"
+#include "document.h"
 #include <windows.h>
-#include "document.h" 
-//PER MAC invece di windows.h
+//PER LINUX invece di windows.h togliere il commento dalla seguente riga
 //#include<unistd.h>
 #include<fstream>    
 
