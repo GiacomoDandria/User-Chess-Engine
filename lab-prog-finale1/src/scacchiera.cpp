@@ -205,7 +205,7 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
             return true;
         }
         //OBLIQUE EATING MOVEMENT
-        else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1) && (topiece != 0x20))
+        else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1) && (topiece != 0x20)){}
         else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1))
         {
             return true;
