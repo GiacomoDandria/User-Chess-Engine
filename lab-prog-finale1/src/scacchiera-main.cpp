@@ -88,6 +88,12 @@ int main() {
             cout << "\n";
             cont++;
         }
+        //Caso partita nulla
+        if (cont >= 50) {
+            cout << "\n ---PARTITA NULLA---" << endl;
+            cout << "\n --- 50  Giocate ---" << endl;
+        }
+         
         cout << "\n\n";
         board.printScacchiera();
         break;
@@ -219,8 +225,10 @@ int main() {
                 break;
             }
             //CONTROLLO COMPUTER SOTTO SCACCO
-            if(scacco::check(board, reb))
-                  cout<<"\n  SCACCO AL COMPUTER"<< endl;
+            if (flag == false) {
+                if (scacco::check(board, reb))
+                    cout << "\n  SCACCO AL COMPUTER" << endl;
+            }
 
             //Gioca il computer
             cout << "\n------GIOCATA DEL COMPUTER-----\n\n\n";
@@ -234,8 +242,10 @@ int main() {
             }
             
             //CONTROLLO UTENTE SOTTO SCACCO
-            if (scacco::check(board, rea))
-                cout << "\n  SCACCO ALL'UTENTE" << endl;
+            if (flag == false) {
+                if (scacco::check(board, rea))
+                    cout << "\n  SCACCO ALL'UTENTE" << endl;
+            }
             
     //            break;
             //Fine ciclo turno

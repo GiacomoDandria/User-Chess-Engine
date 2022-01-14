@@ -210,9 +210,9 @@ std::string randomMove(scacchiera& board, std::string position, char piece) {
 		int count = 8;
 		while (count > 0) {
 			//#1
-			if (count == 7) {
+			if (count == 6) {
 				colonna = move.at(0) - 1;
-				riga = move.at(1) - 1;	
+				riga = move.at(1) - 1;
 			}
 			//#2
 			if (count == 8) {
@@ -220,22 +220,22 @@ std::string randomMove(scacchiera& board, std::string position, char piece) {
 				riga = move.at(1) - 1;
 			}
 			//#3
-			if (count == 6) {
+			if (count == 5) {
 				colonna = move.at(0) + 1;
 				riga = move.at(1) - 1;
 			}
 			//#4
-			if (count == 5) {
+			if (count == 7) {
 				colonna = move.at(0) + 1;
 				riga = move.at(1);
 			}
 			//#5
-			if (count == 1) {
+			if (count == 3) {
 				colonna = move.at(0) + 1;
 				riga = move.at(1) + 1;
 			}
 			//#6
-			if (count == 3) {
+			if (count == 1) {
 				colonna = move.at(0);
 				riga = move.at(1) + 1;
 			}
@@ -247,7 +247,7 @@ std::string randomMove(scacchiera& board, std::string position, char piece) {
 			//#8
 			if (count == 4) {
 				colonna = move.at(0) - 1;
-				riga = move.at(1) ;
+				riga = move.at(1);
 			}
 			//check correct movement
 			if (rangeCheck(colonna, riga)) {
@@ -263,7 +263,7 @@ std::string randomMove(scacchiera& board, std::string position, char piece) {
 		int count = 8;
 		while (count > 0) {
 			//#1
-			if (count == 2) {
+			if (count == 3) {
 				colonna = move.at(0) - 1;
 				riga = move.at(1) - 1;
 			}
@@ -273,12 +273,12 @@ std::string randomMove(scacchiera& board, std::string position, char piece) {
 				riga = move.at(1) - 1;
 			}
 			//#3
-			if (count == 3) {
+			if (count == 4) {
 				colonna = move.at(0) + 1;
 				riga = move.at(1) - 1;
 			}
 			//#4
-			if (count == 4) {
+			if (count == 2) {
 				colonna = move.at(0) + 1;
 				riga = move.at(1);
 			}

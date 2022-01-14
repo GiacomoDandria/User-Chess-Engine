@@ -1,6 +1,7 @@
 #pragma once
 #include "scacchiera.h"
 #include "middlePieces.h"
+#include "randomMoves.h"
 #include<string>
 #include<vector>
 
