@@ -50,7 +50,7 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
         return false;
     
     // controllo: se la mossa e' l'arrocco faccio un controllo 
-    // se non si può fare restituisco false
+    // se non si puÃ² fare restituisco false
     if (scacchiera::arroccoCheck(fromLetter, fromNumber, toLetter, toNumber)) {
         return true;            //arrocco fatto
     }
@@ -237,7 +237,10 @@ void scacchiera::printScacchieraVideo()
     std::cout << "  ABCDEFGH";
     std::cout << "\n" << "\n" << "\n";
     //Non e' un secondo, ma altrimenti ci mette troppo
-    Sleep(100);
+    //NB: per windows usare Sleep(numero-di-millis)
+    Sleep(1000);
+    //NB: per linux/mac usare usleep(numero-di-millis)
+    //usleep(1000);
 }
 
 //stampa la scacchiera su file
