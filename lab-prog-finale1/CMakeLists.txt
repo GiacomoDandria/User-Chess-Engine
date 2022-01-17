@@ -10,7 +10,6 @@ add_executable(scacchiera
     src/alfiere.cpp
     src/cavallo.cpp
     src/middlePieces.cpp
-    src/pedone.cpp
     src/re.cpp
     src/regina.cpp
     src/scacchiera.cpp
@@ -27,7 +26,6 @@ add_executable(replay
     src/alfiere.cpp
     src/cavallo.cpp
     src/middlePieces.cpp
-    src/pedone.cpp
     src/re.cpp
     src/regina.cpp
     src/scacchiera.cpp
