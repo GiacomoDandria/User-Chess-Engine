@@ -1,12 +1,11 @@
 #include "re.h"
 
-/*TODO: - */
-
 bool re::moveReCheck(std::string inputMovement) {
 	//traduzione degli input da "giocatore umano" a indici array 2D
 	std::vector<int> input = traduttore::traduci(inputMovement);
 
-	//controllo se la mossa fa parte delle azioni possibili
+	//controllo se la mossa fa parte delle azioni possibili, ovvero se l'input passato
+	//dall'utente corrisponde a una mossa valida nella scacchiera nelle 8 direzioni possibili per il re
 	if (((input.at(0) == input.at(2) + 1) && (input.at(1) == input.at(3) + 1))   ||  //#1
 		((input.at(0) == input.at(2))     && (input.at(1) == input.at(3) + 1))   ||  //#2
 		((input.at(0) == input.at(2) - 1) && (input.at(1) == input.at(3) + 1))   ||	 //#3
