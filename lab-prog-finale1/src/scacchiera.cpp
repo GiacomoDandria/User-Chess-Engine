@@ -1,25 +1,5 @@
 #include "scacchiera.h"
 
-
-
-/*TODO: - aggiungere funzioni di check situazioni speciali subito dopo il move o nel main
-        - aggiungere distruttore
-        - aggiungere controllo pedone */
-
-
-//scacchiera per debug funzione di check middle pieces
-//scacchiera::scacchiera() : board{
-//    {'T', 'C', 'A', 'D', 'R', 'A', 'C', 'T'},
-//    { 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' },
-//    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
-//    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-//    { 0x20, 'D', 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
-//    { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20},
-//    { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
-//    { 't', 'c', 'a', 'd', 'r', 'a', 'c', 't' },
-//} {
-//}
-
 scacchiera::scacchiera() : board{
     {  'T', 'C' , 'A',  'D' , 'R' , 'A', 'C' ,  'T' },
     {  'P', 'P' , 'P',  'P' , 'P' , 'P', 'P' ,  'P'},
@@ -31,11 +11,11 @@ scacchiera::scacchiera() : board{
     {  't', 'c' , 'a' , 'd' , 'r', 'a' , 'c' , 't'},
 } {
 }
+
 /*Nella funzione movePedina della classe scacchiera, prima della mossa vengono eseguiti i controlli
   necessari ad evitare sovrapposizioni di pedine della stessa squadra e di mosse valide. Per fare
   questo utilizzo i check delle pedine, riconoscendone il tipo tramite la funzione getPiece. Quando
-  la mossa sara' esegita correttamente, la funzione ritornera' TRUE   */
-
+  la mossa sara' esegita correttamente, la funzione ritornera' TRUE*/
 bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int toNumber) {
     //controllo che le posizioni siano valide
     if (fromLetter < 0 || fromNumber < 0 || toLetter < 0 || toNumber < 0)
@@ -52,7 +32,7 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     // controllo: se la mossa e' l'arrocco faccio un controllo 
     // se non si può fare restituisco false
     if (scacchiera::arroccoCheck(fromLetter, fromNumber, toLetter, toNumber)) {
-        return true;            //arrocco fatto
+        return true; //arrocco fatto
     }
     
     //SECONDO controllo: il pezzo sovrascrive uno dello stesso colore
@@ -63,7 +43,7 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     }
     
     //TERZO controllo: mossa valida per la pedina mossa (tramite check)
-    if (frompiece == 'c' || frompiece == 'C') {         //check cavallo
+    if (frompiece == 'c' || frompiece == 'C') { //check cavallo
         if (!cavallo::moveCavalloCheck(position))
             return false;
     }
@@ -146,12 +126,12 @@ std::vector<int> scacchiera::findRe(char re) {
             if (board[i][j] == re) {
                 posizioneRe.push_back((int)i);
                 posizioneRe.push_back((int)j);
-                
             }
         }
     }
     return posizioneRe;
 }
+
 //Controllo presenza re per verificare la vittoria
 bool scacchiera::checkWin(char re) {
     for (auto i = 0; i < 8; i++) {
@@ -164,10 +144,7 @@ bool scacchiera::checkWin(char re) {
     return true;
 }
 
-//-------------------
 // PEDONE CHECK
-//-------------------
-
 bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece) {
     //controlli precondizioni della stringa di input
     if (position.length() != 5)
@@ -180,17 +157,17 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
 
     if (frompiece == 'P')
     {
-        //SIMPLE FORWARD MOVEMENT
+        //movimento verso avanti "semplice"
         if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) + 1) && (topiece == 0x20))
         {
             return true;
         }
-        //OBLIQUE EATING MOVEMENT
+        //moviemento in obliquo (per mangiare)
         else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) + 1) && (topiece != 0x20))
         {
             return true;
         }
-        //DOUBLE BOX MOVEMENT
+        //"passo doppio" se il pedone si trova sulla casella di partenza
         else if ((input.at(1) == 1) && (input.at(3) == 3) && (topiece == 0x20))
         {
             return true;
@@ -199,20 +176,19 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
     }
     if (frompiece == 'p')
     {
-        //SIMPLE FORWARD MOVEMENT
+        //movimento verso avanti "semplice"
         if ((input.at(0) == input.at(2)) && (input.at(3) == input.at(1) - 1) && (topiece == 0x20))
         {
             return true;
         }
-        //OBLIQUE EATING MOVEMENT
+        //moviemento in obliquo (per mangiare)
         else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1) && (topiece != 0x20)){}
         else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1))
         {
             return true;
         }
-        //DOUBLE BOX MOVEMENT
-        else if ((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20))
-        {
+        //"passo doppio" se il pedone si trova sulla casella di partenza
+        else if ((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20)) {
             return true;
         }
         return false;
@@ -263,6 +239,7 @@ void scacchiera::printScacchieraFile(std::string outputFile)
     fileWriter << "\n\n\n";
     fileWriter.close();
 }
+
 //Promozione dei perdoni 
 void scacchiera::promozioneCheck() {
     // Contro riga 8 (sopra). i e' l'indice delle colonne 
