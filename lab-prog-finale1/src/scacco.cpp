@@ -8,6 +8,7 @@ bool scacco::check(scacchiera board, char inputRe) {
 	char r = ' ';
 	char p = ' ';
 
+	//a seconda del re passato come input, le pedine saranno bianche o nere
 	if (inputRe == 'R') {
 		t = 't';
 		c = 'c';
@@ -25,6 +26,7 @@ bool scacco::check(scacchiera board, char inputRe) {
 		p = 'P';
 	}
 	
+	//il vector re conterra' le coordinate del re passate come input alla funzione
 	std::vector<int> re = board.findRe(inputRe);
 
 	//Controllo verticale delle pedine presenti "sotto" il re
@@ -32,13 +34,13 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(i, re.at(1));
 		
 		if (i == re.at(0) + 1)
-			if (temp == r)					//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == t ) {		//se sono presenti torri o regine avversarie
+		if (temp == d || temp == t ) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)					//in tutti gli altri casi esco e passo al controllo
-			if(temp != inputRe)				//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if(temp != inputRe) //sucessivo
 				break;
 		
 	}
@@ -49,13 +51,13 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(i, re.at(1));
 
 		if (i == re.at(0) - 1)
-			if (temp == r)							//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == t) {				//se sono presenti torri o regine avversarie
+		if (temp == d || temp == t) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)							//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)					//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 	}
 
@@ -63,13 +65,13 @@ bool scacco::check(scacchiera board, char inputRe) {
 	for (auto i = re.at(1); i >= 0; i--) {
 		char temp = board.getPiece(re.at(0), i);
 		if (i == re.at(1) - 1)
-			if (temp == r)							//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == t) {				//se sono presenti torri o regine avversarie
+		if (temp == d || temp == t) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)							//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)					//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 	}
 
@@ -78,17 +80,17 @@ bool scacco::check(scacchiera board, char inputRe) {
 	for (auto i = re.at(1); i < 8; i++) {
 		char temp = board.getPiece(re.at(0), i);
 		if (i == re.at(1) + 1)
-			if (temp == r)							//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == t) {				//se sono presenti torri o regine avversarie
+		if (temp == d || temp == t) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)							//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)					//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 	}
 
-	//controllo obliquo presenza pedoni, divide il controllo nel caso di pedine maiuscole e minuscole perché i pedoni
+	//controllo obliquo presenza pedoni, divide il controllo nel caso di pedine maiuscole e minuscole perchÃ© i pedoni
 	//possono soltanto "andare avanti" nella scacchiera
 	if (inputRe == 'R') { //check per pedine maiuscole
 		if ((board.getPiece(re.at(0) + 1, re.at(1) + 1) == p) || (board.getPiece(re.at(0) + 1, re.at(1) - 1) == p)) {
@@ -102,7 +104,7 @@ bool scacco::check(scacchiera board, char inputRe) {
 	}
 
 
-	//controllo diagonali "in alto a sinistra" presenza alfieri o regina o re(diminuiscono entrambi gli indici)-------------------------------------------
+	//controllo diagonali "in alto a sinistra" presenza alfieri o regina o re (diminuiscono entrambi gli indici)
 	int counter1 = re.at(1);
 	for (auto i = re.at(0); i >= 0; i--) {
 		if (counter1 < 0) {
@@ -111,18 +113,18 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(i, counter1);
 
 		if ((i == re.at(0) -1) && (counter1 == re.at(1)-1))
-			if (temp == r)									//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == a) {						//se sono presenti torri o regine avversarie
+		if (temp == d || temp == a) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)									//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)							//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 		counter1--;
 	}
 
-	//controllo diagonali "in basso a destra" presenza alfieri o regina o re(aumentano entrambi gli indici)
+	//controllo diagonali "in basso a destra" presenza alfieri o regina o re (aumentano entrambi gli indici)
 	int counter2 = re.at(1);
 	for (auto i = re.at(0); i < 8; i++) {
 		if (counter2 >= 8) {
@@ -131,13 +133,13 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(i, counter2);
 
 		if ((i == re.at(0) + 1) && (counter2 == re.at(1) + 1))
-			if (temp == r)									//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == a) {						//se sono presenti torri o regine avversarie
+		if (temp == d || temp == a) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)									//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)							//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 		counter2++;
 	}
@@ -151,18 +153,18 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(counter3, i);
 
 		if ((i == re.at(1) - 1) && (counter3 == re.at(0) + 1))
-			if (temp == r)									//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == a) {						//se sono presenti torri o regine avversarie
+		if (temp == d || temp == a) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)									//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)							//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 		counter3++;
 	}
 
-	//controllo diagonali "in alto a destra" presenza alfieri o regina o re(aumenta indice orizzontale e diminuisce vertivale)
+	//controllo diagonali "in alto a destra" presenza alfieri o regina o re (aumenta indice orizzontale e diminuisce vertivale)
 	int counter4 = re.at(0);
 	for (auto i = re.at(1); i < 8; i++) {
 		if (counter4 < 0) {
@@ -171,22 +173,17 @@ bool scacco::check(scacchiera board, char inputRe) {
 		char temp = board.getPiece(counter4, i);
 
 		if ((i == re.at(1) + 1) && (counter4 == re.at(0) - 1))
-			if (temp == r)									//se mi sposto di una casella ed e' presente un re
+			if (temp == r) //se mi sposto di una casella ed e' presente un re
 				return true;
-		if (temp == d || temp == a) {						//se sono presenti torri o regine avversarie
+		if (temp == d || temp == a) { //se sono presenti torri o regine avversarie
 			return true;
 		}
-		if (temp != 0x20)									//in tutti gli altri casi esco e passo al controllo
-			if (temp != inputRe)							//sucessivo
+		if (temp != 0x20) //in tutti gli altri casi esco e passo al controllo
+			if (temp != inputRe) //sucessivo
 				break;
 		counter4--;
 	}
 
-	/*controllo presenza cavallo--RESTITUISCE RISPOSTE SBAGLIATE SE GLI INDICI VANNO FUORI DAL RANGE DELLA MATRICE
-	per esempio, con il re in posizione (y=4, x=7) std::cout << "sdofisdhoi " << board.getPiece(re.at(0) - 1, re.at(1) + 2) << std::endl
-	restituisce che e' presente una 'C' in tale posizione, anche se gli indici sono fuori dalla matrice*/
-	
-	
 	//CONTROLLO SCACCO CAVALLO
 	//#1
 	if(rangeCheck(re.at(0) + 1, re.at(1) + 2))
