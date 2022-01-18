@@ -22,16 +22,12 @@ add_executable(scacchiera
  
 add_executable(replay
     src/replay.cpp
-    src/computer.cpp
     src/alfiere.cpp
     src/cavallo.cpp
-    src/middlePieces.cpp
     src/re.cpp
     src/regina.cpp
     src/scacchiera.cpp
-    src/scacco.cpp
     src/torre.cpp
     src/traduttore.cpp
-    src/randomMoves.cpp
     src/document.cpp
  )
