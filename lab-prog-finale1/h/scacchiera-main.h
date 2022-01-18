@@ -17,4 +17,4 @@
 #include "document.h"
 #include "randomMoves.h"
 
-int main();
+int main(int argCount, char* argVec[]);
