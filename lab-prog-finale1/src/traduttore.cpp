@@ -1,11 +1,10 @@
 #include "traduttore.h"
 
-/*TODO: - controllo precondizioni stringa di inputMovement*/
-
+//tradce soltanto le lettere ammesse come indici nella scacchiera
+//in numeri, per farle diventare delle coordinate per muoversi
+//nella scacchiera
 int traduttore::traduttoreLetter(char letter) {
     int convertedFrom = 0;
-    /*il try - catch dovrebbe essere inutile: alla funzione vengono passati soltanto argomenti
-      corretti, infatti il controllo viene eseguito dalla funzione traduttore::traduci()*/
     try {
         if (letter == 'a' || letter == 'A')
             convertedFrom = 0;
@@ -27,15 +26,25 @@ int traduttore::traduttoreLetter(char letter) {
     catch (std::exception&) {
         std::cout << "Exeption: sono stati inseriti dei valori di movimento non validi." << std::endl;
     }
-
     return convertedFrom;
 }
 
+//conversione del numero passato come input dall'utente in un numero comprensibile
+//dal computer per muoversi all'interno della scacchiera
 int traduttore::traduttoreNumber(int number) {
     return 8 - number;
 }
 
-//Funzione TRADUCI
+/*la funzione traduci effettua tutti i controlli necessari per le stringhe di input, ovvero:
+      - controlla che le lettere siano valide (non importa che siano maiuscole o minuscole)
+      - controlla che i numeri appartengano al range 1-8
+      - controlla che la stringa sia della giusta lunghezza -> len=5
+una volta terminati i controlli viene restituito un vector contenente le coordinate (x, y)
+direttamente interpretabili dal computer per eseguire un movimento, dove si ha che
+      - input.at(0) -> lettera di partenza
+      - input.at(1) -> numero di partenza
+      - input.at(2) -> lettera di arrivo
+      - input.at(3) -> numero di arrivo*/
 std::vector<int> traduttore::traduci(std::string inputMovement) {
     const std::string validLetters = "ABCDEFGHabcdefgh";
     const std::string validNumbers = "12345678";
@@ -62,16 +71,13 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
             std::cout << "Exeption: Input numbers are not valid positions in the board." << std::endl;
             throw std::invalid_argument("");
         }
-        //quando uso il traduttore queste righe stampano a schermo il dato
-        //std::cout << inputMovement[3] << std::endl;
-        //std::cout << validLetters.find(inputMovement[3]) << std::endl;
+        
         fromLetter = traduttore::traduttoreLetter(inputMovement[0]);
         fromNumber = traduttore::traduttoreNumber(inputMovement[1] - '0');
         toLetter = traduttore::traduttoreLetter(inputMovement[3]);
         toNumber = traduttore::traduttoreNumber(inputMovement[4] - '0');
     }
     catch (std::invalid_argument e) {
-       // std::cout << "  Input non validi " << std::endl;
         std::vector<int> vector{ -1, -1, -1, -1 };
     }
 
@@ -79,7 +85,8 @@ std::vector<int> traduttore::traduci(std::string inputMovement) {
     return vettore;
 }
 
-//Funzione TRADUCI REVERSE INT->STRING
+/*La funzione traduciReverse prende come input 4 int (contenuti in un vector)
+e restituisce le coordinate in "stile utente"*/
 std::string traduttore::traduttoreLetterRev(int n){
     std::string letter;
     if (n == 0)
