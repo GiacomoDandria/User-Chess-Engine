@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.2 FATAL_ERROR)
 
 project ("scacchiera")
 
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
 include_directories (h)
 
 add_executable(scacchiera
