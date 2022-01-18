@@ -11,8 +11,8 @@
 #include"traduttore.h"
 #include "document.h"
 //PER LINUX invece di windows.h togliere il commento dalla seguente riga
-#include <windows.h>
-//#include<unistd.h>
+//#include <windows.h>
+#include<unistd.h>
 #include<fstream>    
 
 
