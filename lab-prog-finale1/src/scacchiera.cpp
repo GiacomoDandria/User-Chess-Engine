@@ -214,9 +214,9 @@ void scacchiera::printScacchieraVideo()
     std::cout << "\n" << "\n" << "\n";
     //Non e' un secondo, ma altrimenti ci mette troppo
     //NB: per windows usare Sleep(numero-di-millis)
-    Sleep(1000);
+    //Sleep(1000);
     //NB: per linux/mac usare usleep(numero-di-millis)
-    //usleep(1000);
+    usleep(100000);
 }
 
 //stampa la scacchiera su file
