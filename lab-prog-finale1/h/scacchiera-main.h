@@ -6,7 +6,6 @@
 #include <fstream>
 #include "traduttore.h"
 #include "scacchiera.h"
-#include "pedone.h"
 #include "alfiere.h"
 #include "regina.h"
 #include "re.h"
