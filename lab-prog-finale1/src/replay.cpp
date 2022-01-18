@@ -33,6 +33,9 @@ int main(int argCount, char* argVec[])
             //a seconda della presenza o meno di un secondo parametro passato a riga di comando
             //la scacchiera viene stampata a video piuttosto che su un altro file
             if (argCount == 2) {
+             system("clear");
+             cout << endl;
+             cout << endl;
              board.printScacchieraVideo();
              }
             if (argCount == 3) {
