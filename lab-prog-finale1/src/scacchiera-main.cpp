@@ -41,6 +41,8 @@ int main(int argCount, char* argVec[]) {
         computer a('w'); //Virtual white
         computer b('b'); //Virtual black
         int cont = 0; //contatore mosse
+        int contatorep = 0;
+        int contatoreP = 0;
         string temp = " "; //stringa temporanea per conservare le coordinate
         cout << "Sto giocando... (ci vuole qualche secondo)" << endl;
         while (cont < 50 && !vittoria) {
@@ -49,6 +51,24 @@ int main(int argCount, char* argVec[]) {
 
             document::add_line("log.txt", temp);
 
+            if(board.enPassantFlagPGet() == true)
+            {
+                if(contatoreP == 1)
+                {
+                    board.enPassantFlagPSet(false);
+                    contatoreP = 0;
+                }
+                contatoreP++;
+            }
+            if(board.enPassantFlagpGet() == true)
+            {
+                if(contatorep == 1)
+                {
+                    board.enPassantFlagpSet(false);
+                    contatorep = 0;
+                }
+                contatorep++;
+            }
             //Verifico se il re BIANCO e' stato mangiato
             if (board.checkWin('R')) {
                 cout << "\n Vittoria BIANCHI" << endl;
@@ -84,6 +104,27 @@ int main(int argCount, char* argVec[]) {
         bool fineturno = true; //bool per gestire il turno dell'utente
         vector <int> move; //conserva le mosse riechieste dall'utente
         string request = ""; //conserva le richieste dell'utente
+        int contatorep = 0;
+        int contatoreP = 0;
+
+        if(board.enPassantFlagPGet() == true)
+        {
+            if(contatoreP == 1)
+            {
+                board.enPassantFlagPSet(false);
+                contatoreP = 0;
+            }
+            contatoreP++;
+        }
+        if(board.enPassantFlagpGet() == true)
+        {
+            if(contatorep == 1)
+            {
+                board.enPassantFlagpSet(false);
+                contatorep = 0;
+            }
+            contatorep++;
+        }
        
         //RANDOM colori pc vs user
         if (ran == 1) {

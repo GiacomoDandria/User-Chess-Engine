@@ -144,6 +144,9 @@ bool scacchiera::checkWin(char re) {
     return true;
 }
 
+bool enPassantPassoDoppioFlagp = false;
+bool enPassantPassoDoppioFlagP = false;
+
 // PEDONE CHECK
 bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece) {
     //controlli precondizioni della stringa di input
@@ -163,13 +166,28 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
             return true;
         }
         //moviemento in obliquo (per mangiare)
-        else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) + 1) && (topiece != 0x20))
+        else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) + 1))
         {
-            return true;
+            if(topiece != 0x20)
+            {
+                return true;
+            }
+            //EN PASSANT se la casella di arrivo è vuota
+            if(topiece == 0x20 && enPassantPassoDoppioFlagp == true && getPiece(input.at(3) - 1, input.at(2)) == 'p')
+            {
+                board[input.at(3) - 1][input.at(2)] = 0x20;
+                return true;
+            }
+            return false;
         }
         //"passo doppio" se il pedone si trova sulla casella di partenza
         else if ((input.at(1) == 1) && (input.at(3) == 3) && (topiece == 0x20))
         {
+            //controlla se ci sono pedoni avversari nei dintorni per EN PASSANT
+            if((getPiece(input.at(3), input.at(2) - 1) == 'p') || (getPiece(input.at(3), input.at(2) + 1) == 'p'))
+            {
+                enPassantPassoDoppioFlagP = true;
+            }
             return true;
         }
         return false;
@@ -182,13 +200,28 @@ bool scacchiera::pedoneCheck( std::string position, char frompiece, char topiece
             return true;
         }
         //moviemento in obliquo (per mangiare)
-        else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1) && (topiece != 0x20)){}
         else if (((input.at(2) == input.at(0) + 1) || (input.at(2) == input.at(0) - 1)) && (input.at(3) == input.at(1) - 1))
         {
-            return true;
+            if(topiece != 0x20)
+            {
+                return true;
+            }
+            //EN PASSANT se la casella di arrivo è vuota
+            if(topiece == 0x20 && enPassantPassoDoppioFlagP == true && getPiece(input.at(3) + 1, input.at(2)) == 'P')
+            {
+                board[input.at(3) + 1][input.at(2)] = 0x20;
+                return true;
+            }
+            return false;
         }
         //"passo doppio" se il pedone si trova sulla casella di partenza
-        else if ((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20)) {
+        else if ((input.at(1) == 6) && (input.at(3) == 4) && (topiece == 0x20)) 
+        {
+            //controlla se ci sono pedoni avversari nei dintorni per EN PASSANT
+            if((getPiece(input.at(3), input.at(2) - 1) == 'P') || (getPiece(input.at(3), input.at(2) + 1) == 'P'))
+            {
+                enPassantPassoDoppioFlagp = true;
+            }
             return true;
         }
         return false;
@@ -325,3 +358,24 @@ bool scacchiera::arroccoCheck(int fromLetter, int fromNumber, int toLetter, int 
     return false;
 }
 
+//EN PASSANT
+
+void scacchiera::enPassantFlagPSet(bool flag)
+{
+    enPassantPassoDoppioFlagP = flag;
+}
+
+bool scacchiera::enPassantFlagPGet()
+{
+    return enPassantPassoDoppioFlagP;
+}
+
+void scacchiera::enPassantFlagpSet(bool flag)
+{
+     enPassantPassoDoppioFlagp = flag;
+}
+
+bool scacchiera::enPassantFlagpGet()
+{
+    return enPassantPassoDoppioFlagp;
+}

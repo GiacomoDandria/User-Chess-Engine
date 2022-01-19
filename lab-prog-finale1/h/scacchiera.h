@@ -38,6 +38,14 @@ public:
 
     bool arroccoCheck(int fromLetter, int fromNumber, int toLetter, int toNumber);
 
+    void enPassantFlagPSet(bool flag);
+
+    bool enPassantFlagPGet();
+
+    void enPassantFlagpSet(bool flag);
+
+    bool enPassantFlagpGet();
+
     void promozioneCheck();
 
     void printScacchiera();
