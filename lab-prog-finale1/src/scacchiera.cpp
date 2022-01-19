@@ -333,7 +333,6 @@ bool scacchiera::arroccoCheck(int fromLetter, int fromNumber, int toLetter, int 
 /* Questo controllo verifica il numero di mosse fatte senza aver mosso un pedone.
    Se questo numero e' maggiore della soglia prestabilita e' patta*/
 bool scacchiera::pattaCheck() {
-    std::cout << "\n\n count: " << cont << "\n\n";
     if (cont >= 10)
         return true;
     return false;
