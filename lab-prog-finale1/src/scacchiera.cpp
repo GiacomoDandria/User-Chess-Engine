@@ -46,6 +46,7 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
     if (frompiece == 'c' || frompiece == 'C') { //check cavallo
         if (!cavallo::moveCavalloCheck(position))
             return false;
+         cont++;                                  //viene mossa una pedina che non sia un pedone(per la Patta)
     }
     else if (frompiece == ' ')
         return false;
@@ -58,10 +59,12 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
             else
                 R = true;
         }
+        cont++;                                  //viene mossa una pedina che non sia un pedone(per la Patta)
     }
     else if (frompiece == 'a' || frompiece == 'A') {
         if (!alfiere::moveAlfiereCheck(position))
             return false;
+         cont++;                                  //viene mossa una pedina che non sia un pedone(per la Patta)
     }
     else if (frompiece == 'd' || frompiece == 'D') {
         if (!regina::moveReginaCheck(position))
@@ -84,10 +87,12 @@ bool scacchiera::movePedina(int fromLetter, int fromNumber, int toLetter, int to
                     T2 = true;
             }
         }
+        cont++;                                  //viene mossa una pedina che non sia un pedone(per la Patta)
     }
     else if (frompiece == 'p' || frompiece == 'P') {
         if (!scacchiera::pedoneCheck(position, frompiece, topiece))
             return false;
+         cont = 0;                                  //viene mosso un pedone(per la Patta)
     }
 
     //parte MOVE
@@ -325,3 +330,11 @@ bool scacchiera::arroccoCheck(int fromLetter, int fromNumber, int toLetter, int 
     return false;
 }
 
+/* Questo controllo verifica il numero di mosse fatte senza aver mosso un pedone.
+   Se questo numero e' maggiore della soglia prestabilita e' patta*/
+bool scacchiera::pattaCheck() {
+    std::cout << "\n\n count: " << cont << "\n\n";
+    if (cont >= 10)
+        return true;
+    return false;
+}
