@@ -26,6 +26,7 @@ class scacchiera {
     bool T1 = false; //variabile torre nera a sinistra per arrocco
     bool T2 = false; //variabile torre nera a destra per arrocco
     bool R = false;  //variabile re nero per arrocco
+    int cont = 0;      //conta quando i pedoni non vengono mossi
 
 public:
     scacchiera();
@@ -37,6 +38,8 @@ public:
     bool pedoneCheck(std::string position, char frompiece, char topiece);
 
     bool arroccoCheck(int fromLetter, int fromNumber, int toLetter, int toNumber);
+    
+    bool pattaCheck();
 
     void enPassantFlagPSet(bool flag);
 

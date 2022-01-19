@@ -48,7 +48,11 @@ int main(int argCount, char* argVec[]) {
         while (cont < 50 && !vittoria) {
             temp = a.autoMove(board);
             b.removePiece(temp);
-
+	    //CONTROLLO PER LA PATTA
+            if (board.scacchiera::pattaCheck()) {
+                cout << "\n\n --PATTA-- \n\n";
+                break;
+            }
             document::add_line("log.txt", temp);
 
             if(board.enPassantFlagPGet() == true)
@@ -75,7 +79,13 @@ int main(int argCount, char* argVec[]) {
                 vittoria = true; //Fine partita
                 break;
             }
-
+	    temp = b.autoMove(board);
+            a.removePiece(temp);
+            //CONTROLLO PER LA PATTA
+            if (board.scacchiera::pattaCheck()) {
+                cout << "\n\n --PATTA-- \n\n";
+                break;
+            }
             //Verifico se il re NERO e' stato mangiato
             if (board.checkWin('r')) {
                 cout << "\n Vittoria NERI" << endl;
@@ -227,6 +237,11 @@ int main(int argCount, char* argVec[]) {
                 vittoria = true; //Fine partita
                 break;
             }
+	    //CONTROLLO PER LA PATTA
+            if (board.scacchiera::pattaCheck()) {
+                cout << "\n\n --PATTA-- \n\n";
+                break;
+            }
             //CONTROLLO COMPUTER SOTTO SCACCO
             if (flag == false) {
                 if (scacco::check(board, reb))
@@ -242,7 +257,11 @@ int main(int argCount, char* argVec[]) {
                 vittoria = true; //Fine partita
                 break;
             }
-            
+            //CONTROLLO PER LA PATTA
+            if (board.scacchiera::pattaCheck()) {
+                cout << "\n\n --PATTA-- \n\n";
+                break;
+            }
             //CONTROLLO UTENTE SOTTO SCACCO
             if (flag == false) {
                 if (scacco::check(board, rea))
