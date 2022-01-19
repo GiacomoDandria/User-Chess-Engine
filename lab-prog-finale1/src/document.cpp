@@ -9,6 +9,7 @@ void document::add_line(std::string title, std::string arg) {
 		file << arg << std::endl;
 	}
 	file.close();
+}
 	
 void document::clear_doc(std::string title) {
 	std::fstream file;
