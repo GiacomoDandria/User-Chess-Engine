@@ -20,7 +20,7 @@ int main(int argCount, char* argVec[]) {
     bool vittoria = false; //La partita va avanti finchè uno dei due vince
     string temp = ""; //stringa per contenere l'inserimento cdell'utente
     scacchiera board; //Scacchiera dove verra' giocata la partita
-    char dash = '|';
+    document::clear_doc("log.txt");
     
     string argV = argVec[1];
     if(argV.compare("pc") == 0) {
