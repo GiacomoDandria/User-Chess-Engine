@@ -1,9 +1,12 @@
+//Autore: Giovanni Bellato
+
 #pragma once
 #include<string>
 #include "scacchiera.h"
 #include "traduttore.h"
 
-struct re {
+struct re 
+{
 	static bool moveReCheck(std::string inputMovement);
 };
 

@@ -1,3 +1,5 @@
+//Autore: Giovanni Bellato
+
 #pragma once
 #include<iostream>
 #include<exception>
@@ -18,16 +20,10 @@
 
 
 
-class scacchiera {
+class scacchiera 
+{
     char board[8][8];
-    bool t1 = false; //variabile torre bianca a sinistra per arrocco
-    bool t2 = false; //variabile torre bianca a destra per arrocco
-    bool r = false;  //variabile re bianco per arrocco
-    bool T1 = false; //variabile torre nera a sinistra per arrocco
-    bool T2 = false; //variabile torre nera a destra per arrocco
-    bool R = false;  //variabile re nero per arrocco
-    int cont = 0;      //conta quando i pedoni non vengono mossi
-
+    
 public:
     scacchiera();
 

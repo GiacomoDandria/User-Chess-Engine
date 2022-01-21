@@ -1,10 +1,13 @@
+//Autore: Giovanni Bellato
+
 #pragma once
 #include<iostream>
 #include"scacchiera.h"
 #include"traduttore.h"
 
 
-struct middlePieces {
+struct middlePieces 
+{
 	static bool check(scacchiera&,int,int,int,int);
 };
 

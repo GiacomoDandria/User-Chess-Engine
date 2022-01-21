@@ -1,3 +1,5 @@
+//Autore: Giovanni Bellato
+
 #pragma once
 #include<exception>
 #include <iostream>
@@ -5,7 +7,8 @@
 #include<exception>
 #include<string>
 
-class traduttore {
+class traduttore 
+{
     static int traduttoreLetter(char letter);
     static int traduttoreNumber(int number);
     static std::string traduttoreLetterRev(int letter);

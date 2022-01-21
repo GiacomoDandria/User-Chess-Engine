@@ -1,10 +1,13 @@
+//Autore: Giovanni Bellato
+
 #pragma once
 #include<string>
 #include<math.h>
 #include "scacchiera.h"
 #include "traduttore.h"
 
-struct alfiere {
+struct alfiere 
+{
 	static bool moveAlfiereCheck(std::string inputMovement);
 };
 
