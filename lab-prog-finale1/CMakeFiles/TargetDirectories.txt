@@ -1,2 +1,0 @@
-/Users/bellato/Documents/GitHub/lab-prog-finale1/lab-prog-finale1/CMakeFiles/replay.dir
-/Users/bellato/Documents/GitHub/lab-prog-finale1/lab-prog-finale1/CMakeFiles/scacchiera.dir

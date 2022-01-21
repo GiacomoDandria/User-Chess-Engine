@@ -1,4 +1,0 @@
-/home/local/squamar32502/Scrivania/lab-prog-finale1-master/lab-prog-finale1/build/CMakeFiles/rebuild_cache.dir
-/home/local/squamar32502/Scrivania/lab-prog-finale1-master/lab-prog-finale1/build/CMakeFiles/edit_cache.dir
-/home/local/squamar32502/Scrivania/lab-prog-finale1-master/lab-prog-finale1/build/CMakeFiles/replay.dir
-/home/local/squamar32502/Scrivania/lab-prog-finale1-master/lab-prog-finale1/build/CMakeFiles/scacchiera.dir
