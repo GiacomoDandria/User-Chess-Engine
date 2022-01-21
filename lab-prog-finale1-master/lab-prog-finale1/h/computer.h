@@ -1,3 +1,5 @@
+//AUTORE: MARCO SQUARCINA
+
 #pragma once
 #include<iostream>
 #include<random>
@@ -11,14 +13,17 @@
 #include"randomMoves.h"
 
 struct computer {
+	//COSTRUTTORI
 	computer();
 	computer(char);
-
-	class NoCorrectInfoConstructor{}; //classe per lanciare eccezioni
-	static std::string returnValue(int);
-	void removePiece(std::string);
-	int getSize();
-	std::string autoMove(scacchiera &);
+	
+	//MEMBER FUNCTION
+	class NoCorrectInfoConstructor{};       //Per lanciare eccezioni 	
+	void removePiece(std::string);		//Rimuove la pedina mangiata
+	int getSize();				//Restituisce la dimensione del vector
+	std::string autoMove(scacchiera &);	//Esegue la mossa random
+	//DA RIMUOVERE
+	//static std::string returnValue(int);
 private:
 	//vettore contenente coordinate dei pezzi
 	std::vector <std::string> coordinate{};
@@ -26,7 +31,7 @@ private:
 	
 };
 
-//HELPER FUNCTION
+//Prima funzione random (Non usata nella versione finale del progetto).
 std::string randomPosition(std::string s);
 
 
