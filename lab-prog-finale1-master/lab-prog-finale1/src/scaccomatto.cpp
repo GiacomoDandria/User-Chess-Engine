@@ -1,25 +1,36 @@
+//AUTORE: MARCO SQUARCINA
+
 #include "scaccomatto.h"
-// Bisogna chiamare questa funzione solo quando si ha uno scacco
+
+/*La seguente funzione controlla se nella scacchiera e' presente uno scaccomatto. Viene chiamata dal main quando si ha uno scacco. Si 
+  controlla se in ogni posizione dove il re in questione potrebbe muoversi (anche mangiando eventuali pedine) sarebbe in scacco. Questo
+  e' possibile grazie alla funzione scacco::checkTwo 
+  
+  !I COMMENTI DEL CODICE SONO PRESENTI SOLO NELLA PRIMA PARTE DEL CODICE, POICHE' POI SI RIPETE PER IL RE BIANCO! */
+
 bool scaccomatto::check(scacchiera& board){
     //Eseguo due controlli, uno per il re nero e uno per il bianco
     /* RE NERO */
-    std::vector <int> reNero = board.findRe('R');
-    //controllo se il re ha possibilità o è sotto scaccomatto
-    int count = 8;   //numero massimo di mosse di un re
-    int riga = reNero.at(0);
-    int colonna = reNero.at(1);
-    bool flag = false;
+    std::vector <int> reNero = board.findRe('R');   //Coordinate re nero
+                                                    //controllo se il re ha possibilita' o e' sotto scaccomatto
+    int count = 8;                                  //numero massimo di mosse di un re
+    int riga = reNero.at(0);                        //posizione riga re
+    int colonna = reNero.at(1);                     //posizione colonna re
+    bool flag = false;                              //false = NoScaccoMatto | true = SiScaccoMatto
+    
+    /*Questo ciclo controlla in tutte le posizioni in cui il re puo' muoversi verificando se e' in scacco
+      anche in esse. */
     while(count>0){  //inizio il ciclo
-        //#1
-        if(count == 8)
-            if(rangeCheck(colonna-1,riga-1))
-                if(friendlyCheckU(board ,colonna-1,riga-1))
-                    if(scacco::checkTwo(board,'R',(-1),(-1)))
-                        flag =true;
+        //Controllo #1
+        if(count == 8)          
+            if(rangeCheck(colonna-1,riga-1))                        //Controllo che il range delle coordinate di controllo sia rispettato
+                if(friendlyCheckU(board ,colonna-1,riga-1))         //Controllo presenza di pedine dello stesso colore
+                    if(scacco::checkTwo(board,'R',(-1),(-1)))       //Controllo scacco nelle coordinate date
+                        flag =true;   //E' scacco
                     else
-                        {flag =false; break;}
+                        {flag =false; break;}   //Non e' scacco puo' muovermi in quelle coordinate
                     
-        //#2
+        //Controllo #2
         if(count == 7)
             if(rangeCheck(colonna,riga-1))
                 if(friendlyCheckU(board ,colonna,riga-1))
@@ -27,7 +38,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}
-        //#3
+        //Controllo #3
         if(count == 6)
             if(rangeCheck(colonna+1,riga-1))
                 if(friendlyCheckU(board ,colonna+1,riga-1))
@@ -35,7 +46,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;} 
-        //#4
+        //Controllo #4
         if(count == 5)
             if(rangeCheck(colonna +1 ,riga))
                 if(friendlyCheckU(board ,colonna+1,riga))
@@ -43,7 +54,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}            
-        //#5
+        //Controllo #5
         if(count == 4)
             if(rangeCheck(colonna+1,riga+1))
                 if(friendlyCheckU(board ,colonna+1,riga+1))
@@ -51,7 +62,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}
-        //#6
+        //Controllo #6
         if(count == 3)
             if(rangeCheck(colonna,riga+1))
                 if(friendlyCheckU(board ,colonna,riga+1))
@@ -59,7 +70,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}
-        //#7
+        //Controllo #7
         if(count == 2)
             if(rangeCheck(colonna-1,riga+1))
                 if(friendlyCheckU(board ,colonna-1,riga+1))
@@ -67,7 +78,7 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}
-        //#8
+        //Controllo #8
         if(count == 1)
             if(rangeCheck(colonna-1,riga))
                 if(friendlyCheckU(board ,colonna-1,riga))
@@ -75,7 +86,8 @@ bool scaccomatto::check(scacchiera& board){
                         flag =true;
                     else
                         {flag =false; break;}
-        count--;     //decremento
+        
+        count--;     //decremento per il cilco
     }
 
 
@@ -155,7 +167,7 @@ bool scaccomatto::check(scacchiera& board){
         count--;     //decremento
     }
 
-    return flag;
+    return flag;   //Se il flag alla fine del ciclo e' false non e' scacco matto, in caso contrario lo e'
 }
 
 
