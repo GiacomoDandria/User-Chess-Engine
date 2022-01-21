@@ -344,7 +344,7 @@ int main(int argCount, char* argVec[]) {
             
             //Fine ciclo turno
             flag = false;
-            cont++;
+            //cont++;  //CONTROLLO ERRORE
 
             //Stampa su file
             document::add_line("log.txt", request);
