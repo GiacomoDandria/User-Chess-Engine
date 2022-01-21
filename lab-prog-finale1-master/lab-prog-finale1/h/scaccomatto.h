@@ -1,3 +1,5 @@
+//AUTORE: MARCO SQUARCINA
+
 #pragma once
 #include "scacchiera.h"
 #include "scacco.h"
