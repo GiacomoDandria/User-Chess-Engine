@@ -4,6 +4,8 @@ project ("scacchiera")
 
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
+set (CMAKE_CXX_STANDARD 11)
+
 include_directories (h)
 
 add_executable(scacchiera
