@@ -1,16 +1,5 @@
 #include"computer.h"
 
-
-//-------------------------------------------------------------------------------
-/*TODO: Verifico che nel caso non venga inserito alcuna definizione ('w' or 'b')
-        venga lanciata l'eccezione NoInfoConstructor.
-        Implemento anche, sistemando il traduttore in modo che dia un boolean 
-        in risposta, il move tramite l'uso della scacchiera. 
-        Devo far si che dopo che io mangio una pedina la classe computer 
-        tolga dal vector le coordinate di quella pedina.Questo viene effettuato 
-        tramite la funzione remove. */
-//-------------------------------------------------------------------------------
-
 computer::computer(){throw NoCorrectInfoConstructor();}   //costruttore vuoto
 
 computer::computer(char c) {                       //costruttore pedine white o black
