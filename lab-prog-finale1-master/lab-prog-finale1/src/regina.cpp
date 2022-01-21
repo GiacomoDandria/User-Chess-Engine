@@ -1,3 +1,5 @@
+//Autore: Giacomo D'Andria
+
 #include "regina.h"
 
 bool regina::moveReginaCheck(std::string inputMovement) {
@@ -13,6 +15,5 @@ bool regina::moveReginaCheck(std::string inputMovement) {
 		(input.at(0) == input.at(2) && input.at(1) != input.at(3)) || (input.at(1) == input.at(3) && input.at(0) != input.at(2))) {
 		return true;
 	}
-
 	return false;
 }
