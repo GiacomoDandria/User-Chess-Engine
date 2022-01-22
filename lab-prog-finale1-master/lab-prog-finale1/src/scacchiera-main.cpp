@@ -109,8 +109,8 @@ int main(int argCount, char* argVec[]) {
                 contatorep++;
             }
 	    
-	    //Viene aggiunta la mossa appena eseguita all'interno del file di log
-            document::add_line("log.txt", temp);
+	    //La mossa viene gia' aggiunta dalla classe computer
+            //document::add_line("log.txt", temp);
 
 	    temp = b.autoMove(board); //Automossa del computer B
             a.removePiece(temp); //Rimuovo il pezzo mangiato
