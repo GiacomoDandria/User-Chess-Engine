@@ -70,7 +70,7 @@ int main(int argCount, char* argVec[]) {
             }
 		
             //Verifico se e' scaccomatto
-            if(scacco::check(board, 'R'))
+            if(scacco::check(board, 'R', 0, 0))
                 if(scaccomatto::check(board)){
                         cout << "\nSCACCO MATTO!" << endl;
                         return 0; //il programma termina perche' la partita e' finita
@@ -123,7 +123,7 @@ int main(int argCount, char* argVec[]) {
             }
 		
 	    //Verifico se e' scaccomatto
-            if(scacco::check(board, 'R'))
+            if(scacco::check(board, 'R', 0, 0))
                 if(scaccomatto::check(board)){
                         cout<<"\n SCACCO MATTO "<<endl;
                         return 0;
@@ -306,7 +306,7 @@ int main(int argCount, char* argVec[]) {
 		
             //Controllo se il computer e' sotto scacco
             if (flag == false) {
-                if (scacco::check(board, reb)) { 
+                if (scacco::check(board, reb, 0, 0)) { 
                     if(scaccomatto::check(board)){
                         cout << "\nSCACCO MATTO, L'UTENTE VINCE!" << endl;
                         return 0;
@@ -332,7 +332,7 @@ int main(int argCount, char* argVec[]) {
 		
             //Controllo se l'utente e' sotto scacco
             if (flag == false) {
-                if (scacco::check(board, rea)) {
+                if (scacco::check(board, rea, 0, 0)) {
                     if(scaccomatto::check(board)){
                         document::add_line("log.txt", request);  //Anche con lo scacco l'ultima mossa viene salvata
                         cout<<"\nSCACCO MATTO, COMPUTER VINCE!"<<endl;
@@ -344,7 +344,6 @@ int main(int argCount, char* argVec[]) {
             
             //Fine ciclo turno
             flag = false;
-            //cont++;  //CONTROLLO ERRORE
 
             //Stampa su file
             document::add_line("log.txt", request);
