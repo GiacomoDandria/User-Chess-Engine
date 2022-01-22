@@ -5,7 +5,8 @@
 #include "scacchiera.h"
 #include "traduttore.h"
 
-struct torre {
+struct torre 
+{
 	static bool moveTorreCheck(std::string inputMovement); //Controllo validita' mossa della torre
 };
 
