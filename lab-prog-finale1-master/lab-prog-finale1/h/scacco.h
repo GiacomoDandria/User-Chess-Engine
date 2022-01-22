@@ -1,3 +1,5 @@
+//Autore: Giacomo D'Andria
+
 #pragma once
 #include "scacchiera.h"
 #include "middlePieces.h"
@@ -7,8 +9,7 @@
 
 
 struct scacco {
-	//check dello scacco (BASE)
-	static bool check(scacchiera & board, char re);
-	//check dello scacco (PER SCACCO MATTO)
-	static bool checkTwo(scacchiera & board, char inputRe, int inColonna, int inRiga);
+	//check dello scacco
+	static bool check(scacchiera & board, char re, int inColonna, int inRiga);
+
 };
