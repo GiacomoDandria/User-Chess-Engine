@@ -1,7 +1,7 @@
 # LAB PROGETTAZIONE - PROGETTO FINALE
 Durante la progettazione abbiamo effettuato i seguenti accorgimenti a queste problematiche:
  - La scelta random delle mosse da fare utilizza in realtà una funzione pseudorandom, infatti, dopo aver provato a implementarne una effettivamente random ci siamo accorti che le prestazioni dell'intero programma erano notevolmente ridotte dalla sua presenza. Per tale motivo abbiamo preferito sacrificare l'effettiva casualità della funzione pur di assicurare delle prestazioni (molto) migliori durante l'esecuzione del programma. La classe effettivamente random viene comunque inclusa all'interno delle cartelle di progetto.
- - La patta è stata semplificata ad un semplice contatore di 10 mosse, dopo le quali, se nessuno dei giocatori muove almeno un pedone, viene dichiarata e la partita risulta conclusa.
+ - La patta è stata semplificata ad un semplice contatore di 15 mosse, dopo le quali, se nessuno dei giocatori muove almeno un pedone, viene dichiarata e la partita risulta conclusa.
  - L'implementazione dello scaccomatto è stata semplificata considerando una partita conclusa se, per qualunque posizione in cui il re potrebbe spostarsi, esso rimarrebbe sotto scacco. Non sono stati considerati, per esempio, i casi in cui la pedina che sta facendo scacco possa essere mangiata a sua volta da qualcun'altro, o che il giocatore scelga di sacrificare una propria pedina per evitare che il re rimanga sotto scacco. Se si verificano le condizioni per lo scaccomatto la partita viene semplicmente dichiarata conclusa
  - L'implementazione della pedina pedone non ha una classe propria perché ha bisogno di accedere alla scacchiera in sé per poter eseguire dei controlli. Per tale motivo essa è stata inclusa all'interno di scacchiera.cpp.
 
