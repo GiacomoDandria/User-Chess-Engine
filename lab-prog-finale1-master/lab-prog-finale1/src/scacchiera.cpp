@@ -328,7 +328,7 @@ void scacchiera::printScacchieraVideo()
     std::cout << "\n" << "\n" << "\n";
     //NB: per windows usare Sleep(numero-di-millis)
     //NB: per linux/mac usare usleep(numero-di-millis)
-    usleep(100000);
+    usleep(1000000);
 }
 
 //stampa la scacchiera su file
