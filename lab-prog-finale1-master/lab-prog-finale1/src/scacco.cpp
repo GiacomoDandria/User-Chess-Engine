@@ -2,8 +2,6 @@
 
 #include"scacco.h"
 
-//'a' e 'b' servono ad indicare di quanto incrementare le coordinate del controllo
-//a sta per la colonna e b per la riga
 bool scacco::check(scacchiera &board, char inputRe, int inColonna, int inRiga) {
 	char t = ' '; 
 	char c = ' ';
