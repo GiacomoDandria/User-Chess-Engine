@@ -1,5 +1,4 @@
-
-//AUTORE: MARCO SQUARCINA
+//Autore: Giovanni Bellato
 
 #include "torre.h"
 
