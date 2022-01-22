@@ -326,8 +326,8 @@ void scacchiera::printScacchieraVideo()
     std::cout << std::endl;
     std::cout << "  ABCDEFGH";
     std::cout << "\n" << "\n" << "\n";
-    //NB: per windows usare Sleep(numero-di-millis)
-    //NB: per linux/mac usare usleep(numero-di-millis)
+    //NB: per windows usare Sleep()
+    //NB: per linux/mac usare usleep()
     usleep(1000000);
 }
 
