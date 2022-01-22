@@ -483,7 +483,7 @@ bool scacchiera::enPassantFlagpGet()
    Se questo numero e' maggiore della soglia prestabilita e' patta*/
 bool scacchiera::pattaCheck() 
 {
-    if(cont >= 10)
+    if(cont >= 15)
     {
         return true;
     }
