@@ -1,3 +1,5 @@
+//Autore: Giacomo D'Andria
+
 #pragma once
 #include<string>
 #include<math.h>
