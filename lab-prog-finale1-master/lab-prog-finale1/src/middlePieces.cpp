@@ -1,4 +1,4 @@
-//Autore: Giovanni Bellato
+//Autore: Giacomo D'Andria
 
 #include "middlePieces.h"
 
